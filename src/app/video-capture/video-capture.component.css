@@ -1,0 +1,88 @@
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 50px;
+    line-height: 60px;
+    margin-left: 7px;
+    padding-bottom: 2%;
+  }
+  
+  .page-header{
+    text-align:center;
+    margin-top: 5%;
+  }
+  
+  .info{
+    text-align: justify;
+    text-justify: inter-word;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  
+  .camera{
+    padding-top: 20px;
+    text-align: center;
+    display: none;
+  }
+  
+  .camera-actions {
+    margin-top: 10px;
+  }
+  
+  
+  .snapshot{
+    text-align: center;
+  }
+  
+  #label {
+    margin-right: 10px;
+  }
+  
+  .image-form{
+    margin-top: 15px;
+  }
+  
+  .actionBtn{
+    border: none;
+    color: white;
+    font-size: 16px;
+    margin-right: 5px;
+    padding: 15px 32px;
+    text-align: center;
+    background-color: #2C5697;
+  }
+  
+  .actionBtn:hover {
+    border: none;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+  
+  select{
+    width: 100%;
+    margin-right: 2%;
+    min-width: 15ch;
+    max-width: 30ch;
+    border: 1px solid var(--select-border);
+    border-radius: 0.25em;
+    padding: 0.25em 0.5em;
+    font-size: 1.25rem;
+    cursor: pointer;
+    line-height: 1.1;
+    background-color: #fff;
+    background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
+  }
+  
+  select::-ms-expand {
+    display: none;
+  }
+  
+  .select::after {
+    content: "";
+    width: 0.8em;
+    height: 0.5em;
+    background-color: var(--select-arrow);
+    clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+  }

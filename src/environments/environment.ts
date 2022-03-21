@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  emotions_endpoints: 'http://localhost:8080/api/v1/emotions',
+  images_endpoints: 'http://localhost:8080/api/v1/images',
+  model_endpoint: 'http://25.1.186.127:8080/recibir-imagen',
 };
 
 /*
