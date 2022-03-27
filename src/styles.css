@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    font-family: 'Montserrat', sans-serif;
+
+    box-sizing: border-box;
+
+    /**/
+    --light-blue: #2b71db78;
+    --white: #FFFDFD;
+
+    --black-faded: #00000078;
+
+}
+
+* input:focus {
+    outline: none;
+} 
+
+body {
+    margin: 0;
+}
