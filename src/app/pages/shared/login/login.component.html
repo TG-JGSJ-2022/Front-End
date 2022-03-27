@@ -1,0 +1,16 @@
+<div class="login-page-body">
+
+    <div class="login-form-wrapper">
+    
+        <form (submit)="submitForm($event)">
+            <!-- Username -->
+            <input type="text" [(ngModel)]="username" name="username" autocomplete="off" placeholder="Usuario" id="username">
+            <!-- Password -->
+            <input type="password" [(ngModel)]="password" name="password" autocomplete="off" placeholder="Contraseña" id="password">
+            <!-- Submit button -->
+            <button type="submit"> Ingresar </button>
+        </form>
+    
+    </div>
+    
+</div>

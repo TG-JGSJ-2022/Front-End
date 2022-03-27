@@ -2,9 +2,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { VideoCaptureComponent } from './video-capture/video-capture.component';
+import { VideoCaptureComponent } from './pages/student/video-capture/video-capture.component';
+import { LoginComponent } from './pages/shared/login/login.component';
+
+import { AppRoutingModule } from './app-routing.module';
 import { WebcamModule } from 'ngx-webcam';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -12,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
     VideoCaptureComponent
   ],
   imports: [
