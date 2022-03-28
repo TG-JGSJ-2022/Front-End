@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+import { environment } from 'src/environments/environment';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -19,14 +21,13 @@ export class LoginComponent implements OnInit {
   username: string = ""; 
   password: string = "";
 
-  backgroundImage: string = "assets/loginBackground.png";
+  loginEndpoint: string = environment.api_login;
 
   /**
    * Methods
    */
   submitForm(event: any) {
-    console.log(this.username); 
-    console.log(this.password); 
+    
   }
 
 }
