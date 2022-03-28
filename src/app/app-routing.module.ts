@@ -5,7 +5,7 @@ import { VideoCaptureComponent } from './pages/student/video-capture/video-captu
 import { CoursesComponent } from './pages/teacher/courses/courses.component';
 
 const routes: Routes = [
-  { path: 'home', component: VideoCaptureComponent },
+  { path: '', component: VideoCaptureComponent },
   { path: 'login', component: LoginComponent }, 
   { path: 'courses', component: CoursesComponent }
 ];
