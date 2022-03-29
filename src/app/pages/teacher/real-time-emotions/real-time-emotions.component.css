@@ -1,0 +1,19 @@
+.emoji{
+    margin-right: 10px;
+}
+.result{
+    display: flex;
+    justify-content: center;
+}
+.negative{
+    
+    margin-top: 10px;
+}
+.modal-body{
+    text-align: center;
+    position: relative;
+    justify-content: center;
+}
+.negative .result:hover{
+    background-color: yellow;
+}

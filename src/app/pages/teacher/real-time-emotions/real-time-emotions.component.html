@@ -1,0 +1,35 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h6 class="modal-title">Sesión 29 de Marzo - Estructuras de Datos </h6>
+        <!--<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>-->
+    </div>
+    <div class="modal-body">
+        <p>19 estudiantes conectados</p>
+        <div class="positive"> 
+            <div class="result">
+                <div>
+                    <!--{{positiveResult}}%-->
+                    60%
+                    <img class="emoji" src="../../../../assets/images/positive_emotions.png">
+                </div>
+            </div>
+        </div>
+        <div class="negative">
+            <div class="result">
+                <div>
+                    <!--{{negativeResult}}%-->
+                    40%
+                    <img class="emoji" src="../../../../assets/images/negative_emotions.png">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Finalizar clase</button>
+    </div>
+</ng-template>
+
+
+<button class="btn btn-outline-primary mb-2 me-2" (click)="openVerticallyCentered(content)">Iniciar Clase</button>
+
+
