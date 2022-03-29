@@ -1,7 +1,6 @@
 import {Component, ViewEncapsulation, OnInit} from '@angular/core';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap'
-import { Subscription } from 'rxjs';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+
 
 
 @Component({
@@ -13,7 +12,10 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 export class RealTimeEmotionsComponent implements OnInit {
   
-  closeResult: string;
+  studentsOnline: number = 0;
+  positiveResult: number = 0;
+  negativeResult: number = 0;
+
 
   constructor(private modalService: NgbModal) {}
 
@@ -23,6 +25,9 @@ export class RealTimeEmotionsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.studentsOnline = 19;
+    this.positiveResult = 60;
+    this.negativeResult = 40;
 
   }
 
