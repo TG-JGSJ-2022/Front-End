@@ -1,6 +1,8 @@
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserServiceService } from 'src/app/services/user/user-service.service';
 
-import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -9,25 +11,24 @@ import { environment } from 'src/environments/environment';
 })
 export class LoginComponent implements OnInit {
 
-  /**
-   * Constructor(s) 
-   */
-  ngOnInit(): void {
-  }
-
-  /**
-   * Attributes
-   */
   username: string = ""; 
   password: string = "";
 
-  loginEndpoint: string = environment.api_login;
+  constructor(private http: HttpClient, 
+              private router: Router, 
+              private userService: UserServiceService) {}
 
-  /**
-   * Methods
-   */
+  ngOnInit(): void {}
+
   submitForm(event: any) {
-    console.log(event);
+    this.userService.login(this.username, this.password)
+      .subscribe( data => {
+        sessionStorage.setItem('user', this.username);
+        this.router.navigate(["/courses"]);
+        console.log(data);
+      }, error => {
+        this.router.navigate(["/login"]);
+      });
   }
 
 }
