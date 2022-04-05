@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
    * Methods
    */
   submitForm(event: any) {
-    
+    console.log(event);
   }
 
 }
