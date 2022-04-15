@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { LoginComponent } from '../pages/shared/login/login.component';
-import { AuthServiceService } from '../services/auth-service.service';
+
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,12 +10,14 @@ import { AuthServiceService } from '../services/auth-service.service';
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private authServiceService:AuthServiceService) { }
-  activeClass:boolean = true;
+  constructor() { }
+  
   ngOnInit(): void {
   }
-  onLogOut():void{
-   this.authServiceService.logoutUser();
+  activeClass:boolean = true;
+  logoutEndpoint: string = environment.api_logout;
+  submitForm(event: any){
+
   }
   onClassActive():void{
   }
