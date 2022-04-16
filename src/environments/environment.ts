@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   emotions_endpoints: 'http://localhost:8080/api/v1/emotions',
   images_endpoints: 'http://localhost:8080/api/v1/images',
-  model_endpoint: 'http://25.1.186.127:8080/recibir-imagen',
+  model_endpoint: 'http://localhost:5000/recibir-imagen',
   api_login: 'http://localhost:5000/login',
 };
 
