@@ -9,6 +9,7 @@ export const environment = {
   model_endpoint: 'http://25.1.186.127:8080/recibir-imagen',
   api_login: 'http://localhost:8080/login',
   api_logout: 'http://localhost:8080/logout',
+
 };
 
 /*
