@@ -8,6 +8,7 @@ export const environment = {
   images_endpoints: 'http://localhost:8080/api/v1/images',
   model_endpoint: 'http://25.1.186.127:8080/recibir-imagen',
   api_login: 'http://localhost:8080/login',
+  result_endpoint: 'http://25.1.186.127:8080/resultado'
 };
 
 /*

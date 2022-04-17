@@ -7,14 +7,15 @@ import { AppComponent } from './app.component';
 import { VideoCaptureComponent } from './pages/student/video-capture/video-capture.component';
 import { LoginComponent } from './pages/shared/login/login.component';
 import { CoursesComponent } from './pages/teacher/courses/courses.component';
-import {  RealTimeEmotionsComponent } from './pages/teacher/real-time-emotions/real-time-emotions.component';
+import { RealTimeEmotionsComponent } from './pages/teacher/real-time-emotions/real-time-emotions.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { WebcamModule } from 'ngx-webcam';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
-
 
 @NgModule({
   declarations: [
@@ -30,7 +31,9 @@ import { HttpClientModule } from '@angular/common/http';
     WebcamModule,
     FormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule,
+    TooltipModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

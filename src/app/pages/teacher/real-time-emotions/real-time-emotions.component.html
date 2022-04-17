@@ -1,24 +1,28 @@
 <ng-template #content let-modal>
     <div class="modal-header">
-        <h6 class="modal-title">Sesión 29 de Marzo - Estructuras de Datos </h6>
+        <h6 class="modal-title">Sesión {{sesion_date}} - {{class_name}} </h6>
         <!--<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>-->
-    </div>
+   </div>
     <div class="modal-body">
         <p>{{studentsOnline}} estudiantes conectados</p>
         <div class="positive"> 
             <div class="result">
-                <div>
-                    {{positiveResult}}%
-                    
+                <div >
+                    {{positiveResult}}%                    
                     <img class="emoji" src="../../../../assets/images/positive_emotions.png">
                 </div>
             </div>
         </div>
         <div class="negative">
-            <div class="result">
+            <div class="result"> 
                 <div>
-                    {{negativeResult}}%                    
-                    <img class="emoji" src="../../../../assets/images/negative_emotions.png">
+                <ng-template #tolTemplate>Alerta! 
+                    <li *ngFor="let emocion of emociones">
+                        {{emocion.nombre}}: {{emocion.porcentaje}}%
+                    </li> 
+                </ng-template>     
+                    {{negativeResult}}% 
+                    <img class="emoji" src="../../../../assets/images/negative_emotions.png" [tooltip]="tolTemplate" placement="right">
                 </div>
             </div>
         </div>
@@ -27,8 +31,6 @@
         <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Finalizar clase</button>
     </div>
 </ng-template>
-
-
-<button class="btn btn-outline-primary mb-2 me-2" (click)="openVerticallyCentered(content)">Clase activa</button>
-
+<!--(click)="update_data($event)"-->
+<button class="btn btn-outline-primary mb-2 me-2" (click)="openVerticallyCentered(content)"  >Clase activa</button>
 
