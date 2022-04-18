@@ -23,5 +23,8 @@ export class UserServiceService {
       withCredentials: true
     });
   }
-
+  logout(){
+    const api_endpoint_logout: string = environment.api_logout;
+     
+  }
 }
