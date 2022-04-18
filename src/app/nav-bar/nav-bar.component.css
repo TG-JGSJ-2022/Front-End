@@ -1,0 +1,57 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 62.5%; /*con esto un rem es igual a 10px y sirve para usar medidas relativas */
+}
+.navBar{
+    background-color: #2c5697;   
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    width: 180%;
+}
+.titulo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h1{
+    color: #FFFDE7;
+    font-size: 45px;
+    font-family: Roboto, sans-serif;
+}
+ul{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+ul li{
+    margin: 0 30px;
+}
+ul li a{
+    font-size: 1.8rem; 
+    padding: 10px;
+    border: 2px solid #00CA13;
+    border-radius: 5px;
+    color: #00ca13;
+    display: inline-block;
+    width: 192px;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+}
+ul li button{
+    font-size: 1.8rem;
+    padding: 10px;
+    background-color: #F8CD00;
+    border-radius: 5px;
+    color: #000000;
+    width: 192px;
+    font-family: 'Lato', sans-serif;
+    border: none;
+}

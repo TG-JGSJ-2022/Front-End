@@ -7,11 +7,20 @@ const NEURAL_NETWORK_PORT = '8080';
 
 export const environment = {
   production: false,
+<<<<<<< HEAD
   emotions_endpoints: `http://localhost:${NEURAL_NETWORK_PORT}/api/v1/emotions`,
   images_endpoints: `http://localhost:${NEURAL_NETWORK_PORT}/api/v1/images`,
   model_endpoint: `http://25.1.186.127:${NEURAL_NETWORK_PORT}/recibir-imagen`,
   api_login: `http://localhost:${SERVER_PORT}/login`,
   api_courses: `http://localhost:${SERVER_PORT}/courses`
+=======
+  emotions_endpoints: 'http://localhost:8080/api/v1/emotions',
+  images_endpoints: 'http://localhost:8080/api/v1/images',
+  model_endpoint: 'http://25.1.186.127:8080/recibir-imagen',
+  api_login: 'http://localhost:8080/login',
+  api_logout: 'http://localhost:8080/logout',
+
+>>>>>>> 7bb72a2a94fc03babbf3acdcdf4c0efa25fdfcd9
 };
 
 /*
