@@ -1,0 +1,11 @@
+<header>
+    <nav class="navBar"> 
+        <div class="TituloNav">
+        <h1>Nombre App</h1>
+        </div> 
+        <ul>
+            <li *ngIf="activeClass"><a href="#">Clase Activa</a></li>
+            <button (click)="logout()">Cerrar sesión</button>
+        </ul>
+    </nav>
+</header>

@@ -1,6 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserServiceService } from 'src/app/services/user/user-service.service';
 
-import { environment } from 'src/environments/environment';
+
+interface resopnseUser {
+  id: string,
+  username: string
+}
 
 @Component({
   selector: 'app-login',
@@ -9,25 +16,31 @@ import { environment } from 'src/environments/environment';
 })
 export class LoginComponent implements OnInit {
 
-  /**
-   * Constructor(s) 
-   */
+  username: string = ''; 
+  password: string = '';
+
+  universityLogo: string = '/assets/images/PujLogo.svg';
+  userLogo: string = '/assets/images/userLogo.svg'; 
+  passwordLogo: string = '/assets/images/passwordLogo.svg';
+
+  constructor(private router: Router, 
+              private userService: UserServiceService) {}
+
   ngOnInit(): void {
+    if (sessionStorage.getItem('user')) {
+      this.router.navigate(['/courses']);
+    }
   }
 
-  /**
-   * Attributes
-   */
-  username: string = ""; 
-  password: string = "";
-
-  loginEndpoint: string = environment.api_login;
-
-  /**
-   * Methods
-   */
   submitForm(event: any) {
-    
+    this.userService.login(this.username, this.password)
+      .subscribe( (data: resopnseUser) => {
+        sessionStorage.setItem('user', data.username);
+        sessionStorage.setItem('id', data.id);
+        this.router.navigate(["/courses"]);
+      }, (error) => {
+        this.router.navigate(["/login"]);
+      });
   }
 
 }
