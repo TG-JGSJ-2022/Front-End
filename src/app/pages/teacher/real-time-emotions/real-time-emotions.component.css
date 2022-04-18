@@ -1,0 +1,29 @@
+.emoji{
+    margin-right: 10px;
+}
+.result{
+    display: flex;
+    justify-content: center;
+}
+.positive{
+    margin-top: 20px;
+}
+.negative{
+    
+    margin-top: 20px;
+}
+.modal-body{
+    text-align: center;
+    position: relative;
+    justify-content: center;
+}
+
+.example-tooltip-host {
+    display: inline-flex;
+    align-items: center;
+    margin: 50px;
+  }
+  
+  .example-select {
+    margin: 0 10px;
+  }
