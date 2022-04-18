@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {Observable, Subject} from 'rxjs';
 import {WebcamImage, WebcamInitError, WebcamUtil} from 'ngx-webcam';
-import { ImageServiceService } from 'src/app/services/image/image-service.service'; 
+import { ImageServiceService } from 'src/app/services/image/image-service.service';
 import { ImagePredictionResponse } from 'src/app/interfaces/image-prediction-response';
 import { HostListener} from '@angular/core';
 
@@ -78,6 +78,7 @@ export class VideoCaptureComponent implements OnInit, OnDestroy {
       if (this.webcamImage) {
         this.imageService.postImagePrediction(this.webcamImage.imageAsBase64)
         .subscribe((res) => {
+              console.log(res);
               const imagePrediction: ImagePredictionResponse = res.data;
               this.imagePrediction = imagePrediction.prediction;
           },
