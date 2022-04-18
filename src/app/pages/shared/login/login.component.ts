@@ -4,6 +4,11 @@ import { Router } from '@angular/router';
 import { UserServiceService } from 'src/app/services/user/user-service.service';
 
 
+interface resopnseUser {
+  id: string,
+  username: string
+}
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -23,16 +28,16 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     if (sessionStorage.getItem('user')) {
-      console.log("User already sign in");
+      this.router.navigate(['/courses']);
     }
   }
 
   submitForm(event: any) {
     this.userService.login(this.username, this.password)
-      .subscribe( (data) => {
-        sessionStorage.setItem('user', this.username);
+      .subscribe( (data: resopnseUser) => {
+        sessionStorage.setItem('user', data.username);
+        sessionStorage.setItem('id', data.id);
         this.router.navigate(["/courses"]);
-        console.log(data);
       }, (error) => {
         this.router.navigate(["/login"]);
       });

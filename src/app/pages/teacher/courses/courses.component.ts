@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserServiceService } from 'src/app/services/user/user-service.service';
 
 @Component({
   selector: 'app-courses',
@@ -7,44 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoursesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router,
+              private userService: UserServiceService) { }
 
-  courses: Array<Object> = [];
+  courses: any = [];
+  username: string = ''; 
+  userId: string = '';
 
   // TODO :
   // This function should call the backend in order 
   // to fill the array of courses, but at this point the 
   // courses will be mocked
   fillTeacherCoursesArray(): void {
-    this.courses = [
-      {
-        courseCode: "15160", 
-        courseName: "Visualización de datos",
-      },
-      {
-        courseCode: "15160", 
-        courseName: "Introducción a la inteligencia artificial",
-      },
-      {
-        courseCode: "15160",
-        courseName: "Análisis de algoritmos",
-      },
-      {
-        courseCode: "15160", 
-        courseName: "Visualización de datos",
-      },
-      {
-        courseCode: "15160", 
-        courseName: "Introducción a la inteligencia artificial",
-      },
-      {
-        courseCode: "15160", 
-        courseName: "Análisis de algoritmos",
-      }
-    ];
+    this.userService.getTeacherCourses(this.username, this.userId)
+        .subscribe( (data) => {
+          this.courses = data
+          console.log(this.courses)
+        }, (error) => {
+          this.router.navigate(["/courses"]);
+        });
   } 
 
   ngOnInit(): void {
+    this.username = sessionStorage.getItem('user')
+    this.userId = sessionStorage.getItem('id'); 
+
     this.fillTeacherCoursesArray();
   }
 

@@ -9,18 +9,29 @@ export class UserServiceService {
 
   constructor(private http: HttpClient) { }
 
+  API_ENDPOINT_LOGIN: string = environment.api_login;
+  API_ENDPOINT_COURSES: string = environment.api_courses;
+
   login(username: string, password: string) {
-    
-    const api_endpoint_login: string = environment.api_login;
 
     const formHeaders = new HttpHeaders()
       .append('Content-Type', 'application/json'); 
 
     const body = {'user': username, 'password': password};
 
-    return this.http.post(api_endpoint_login, body, {
+    return this.http.post(this.API_ENDPOINT_LOGIN, body, {
       headers: formHeaders,
       withCredentials: true
+    });
+  }
+
+  getTeacherCourses(username: string, userId: string | number) {
+
+    const headers = new HttpHeaders()
+      .append('Content-Type', 'application/json'); 
+
+    return this.http.get(this.API_ENDPOINT_COURSES + `?user=${username}&id=${userId}`, {
+      headers: headers
     });
   }
 
