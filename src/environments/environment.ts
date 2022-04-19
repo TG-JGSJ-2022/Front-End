@@ -2,8 +2,15 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+const SERVER_PORT = '5000';
+const NEURAL_NETWORK_PORT = '8080';
+
 export const environment = {
-  production: false
+  production: false,
+  model_endpoint: `http://localhost:${SERVER_PORT}/recibir-imagen`,
+  result_endpoint: `http://localhost:${SERVER_PORT}/resultado`,
+  api_login: `http://localhost:${SERVER_PORT}/login`,
+  api_courses: `http://localhost:${SERVER_PORT}/courses`,
 };
 
 /*

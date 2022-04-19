@@ -1,0 +1,41 @@
+<router-outlet></router-outlet>
+<div class='page-header'>
+  <h1>
+    Capturador de expresiones faciales de la PUJ
+  </h1>
+</div>
+
+<div>
+  <div class = 'picture-capture'>
+    <h2 class='info'>
+      Hola! Gracias por hacer uso del capturador de expresiones faciales. El objetivo de este proyecto es el de analizar
+      las expresiones faciales de la comunidad javeriana con el objetivo de identificar sus emociones. Para ser parte de este proyecto,
+      debes manifestar que estás de acuerdo con que tus datos serán tratados acorde a la <a href = 'https://www.javeriana.edu.co/documents/10179/9567882/Acuerdo+No+657.pdf'>política de protección de datos personales</a>
+      y la <a href = 'https://www.javeriana.edu.co/documentos/tratamiento_datos_personales.pdf'>política de tratamiento de datos personales</a>
+    </h2>
+    <label>
+      <input type='checkbox' [checked]="acceptPolicy" (click)='validatePolicy($event)'/>
+      Autorizo que la Pontifica Universidad Javeriana haga uso de mis datos personales acorde a la política de protección y privacidad de datos
+    </label>
+  </div>
+
+  <div class='camera'>
+    <webcam [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam && acceptPolicy"
+            [videoOptions]="videoOptions"
+            [imageQuality]="1"
+            (initError)="handleInitError($event)"
+    ></webcam>
+    <br/>
+  </div>
+</div>
+
+<!--<div class="snapshot" *ngIf="webcamImage">
+  <img [src]="webcamImage.imageAsDataUrl"/>
+  
+</div>-->
+
+<p *ngIf="imagePrediction"> Emoción: {{imagePrediction}}</p>
+
+<footer>
+  <p>Programa basado en el siguiente proyecto de GitHub: <a target="_blank" rel="noopener" href="https://github.com/basst314/ngx-webcam">Ngx-Webcam / GitHub</a></p>
+</footer>
