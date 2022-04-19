@@ -31,11 +31,12 @@ ul li > * {
 ul li {
     margin: 0 30px;
 }
-ul li a {
+ul li button{
     padding: 10px;
     border: 2px solid #00CA13;
     border-radius: 5px;
     color: #00ca13;
+    background-color: white;
     display: inline-block;
     width: 192px;
     text-align: center;
@@ -47,4 +48,23 @@ button {
     color: #000000;
     width: 192px;
     border: none;
+}
+.emoji{
+    margin-right: 10px;
+}
+.result{
+    display: flex;
+    justify-content: center;
+}
+.positive{
+    margin-top: 20px;
+}
+.negative{
+    
+    margin-top: 20px;
+}
+.modal-body{
+    text-align: center;
+    position: relative;
+    justify-content: center;
 }

@@ -59,7 +59,7 @@ export class VideoCaptureComponent implements OnInit, OnDestroy {
     public validatePolicy(event): void {
       this.acceptPolicy = event.target.checked;
       if (this.acceptPolicy) {
-        this.autoTrigger = setInterval(() => this.processImage(), 5000);
+        this.autoTrigger = setInterval(() => this.processImage(), 10000);
       } else {
         clearInterval(this.autoTrigger);
       }
