@@ -12,7 +12,10 @@ export class ImageServiceService {
   constructor(private http: HttpClient) { }
 
   postImagePrediction(base64Image: string): Observable<ResponseInterface> {
-    return this.http.post<ResponseInterface>(environment.model_endpoint, {base64Image}, {responseType: 'json'});
+    return this.http.post<ResponseInterface>(environment.model_endpoint, { base64Image }, {
+      responseType: 'json',
+      withCredentials: true
+    });
   }
 
 }
