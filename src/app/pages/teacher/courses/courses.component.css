@@ -3,27 +3,35 @@
 ***********************/
 .layout {
     width: 100%;
-
-    border: 1px solid black; 
-
-    display: grid;
-    grid-template-columns: repeat(autoifll, 310px);
 }
 
 /***********************
         Title 
 ***********************/
 .page-title {
-    grid-column: 1 / span 3;
+    padding: 20px 40px;
 }
 .page-title p {
     font-size: 21px;
 }
 
 /***********************
-        Card 
+        Cards
 ***********************/
+.cards-wrapper {
+    margin-inline: auto;
+
+    width: 80%;
+
+    display: flex;
+    flex-flow: row wrap; 
+
+    justify-content: space-between;
+}
+
 .card {
+    margin-bottom: 30px;
+
     box-sizing: border-box;
 
     background-color: #C4C4C4;
@@ -74,6 +82,13 @@
 }
 .card .card-footer a {
     text-decoration: none;
+}
 
-
+/***********************
+        Resoponsive
+***********************/
+@media (max-width: 775px) {
+    .cards-wrapper {
+        justify-content: center;
+    }
 }
