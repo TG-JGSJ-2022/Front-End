@@ -6,7 +6,8 @@ import { UserServiceService } from 'src/app/services/user/user-service.service';
 
 interface resopnseUser {
   id: string,
-  username: string
+  username: string,
+  rol: string
 }
 
 @Component({
@@ -16,15 +17,15 @@ interface resopnseUser {
 })
 export class LoginComponent implements OnInit {
 
-  username: string = ''; 
+  username: string = '';
   password: string = '';
 
   universityLogo: string = '/assets/images/PujLogo.svg';
-  userLogo: string = '/assets/images/userLogo.svg'; 
+  userLogo: string = '/assets/images/userLogo.svg';
   passwordLogo: string = '/assets/images/passwordLogo.svg';
 
-  constructor(private router: Router, 
-              private userService: UserServiceService) {}
+  constructor(private router: Router,
+    private userService: UserServiceService) { }
 
   ngOnInit(): void {
     if (sessionStorage.getItem('user')) {
@@ -34,11 +35,18 @@ export class LoginComponent implements OnInit {
 
   submitForm(event: any) {
     this.userService.login(this.username, this.password)
-      .subscribe( (data: resopnseUser) => {
+      .subscribe((data: resopnseUser) => {
+        console.log(Response)
         sessionStorage.setItem('user', data.username);
         sessionStorage.setItem('id', data.id);
-        this.router.navigate(["/courses"]);
-      }, (error) => {
+        sessionStorage.setItem('rol', data.rol);
+        if (data.rol == "estudiante") {
+          this.router.navigate(["/capture"]);
+        }
+        else {
+          this.router.navigate(["/courses"]);
+        }
+      }, () => {
         this.router.navigate(["/login"]);
       });
   }
