@@ -1,10 +1,10 @@
 <header>
-    <nav class="navBar"> 
+    <nav class="navBar">
         <div class="TituloNav">
         <h1>Nombre App</h1>
-        </div> 
+        </div>
         <ul>
-            <li *ngIf="activeClass"><a href="#">Clase Activa</a></li>
+            <li *ngIf="activeClass" (click)="claseActiva()"><a href="#">Clase Activa</a></li>
             <button (click)="logout()">Cerrar sesión</button>
         </ul>
     </nav>

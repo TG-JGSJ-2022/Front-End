@@ -16,7 +16,7 @@ export class NavBarComponent implements OnInit {
               private userServices: UserServiceService) {}
 
   activeClass: boolean = true;
-  
+
   ngOnInit(): void {
     if(sessionStorage.getItem('activeclass')) {
       console.log("Clase activa, NO puede cerrar sesión ")
@@ -27,12 +27,15 @@ export class NavBarComponent implements OnInit {
     sessionStorage.clear();
     this.userServices.logout();
     this.router.navigate(["/login"]);
-  } 
+  }
 
   onClassActive(): void{
     if(sessionStorage.getItem('activeclass')){
     this.router.navigate(["/modal"])
     }
+  }
+  claseActiva():void{
+
   }
 
 }
