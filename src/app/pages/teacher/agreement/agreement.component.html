@@ -1,11 +1,12 @@
-<p>agreement works!</p>
+<app-nav-bar></app-nav-bar>
+
 <div>
     <div class = 'autorizacción'>
       <h2 class='informacion'>
         Hola! Gracias por hacer uso de NOMBRE APLICACIÖN. El objetivo de esta aplicación es brindarle un retroalimentación de las emociones de sus estudiantes.Para ser parte de este proyecto,
         debes manifestar que se compromente a darle un uso responasable de esta información acorde a la <a href = 'https://www.javeriana.edu.co/recursosdb/813229/983103/Reglamento+Profesores.pdf/5f9adce7-583b-328e-410a-a403c8643b34?t=1606507140703'> Reglamento del profesorado</a>
               </h2>
-      <label>
+      <label class="permiso">
         <input type='checkbox' [checked]="acceptPolicy" (click)='validatePolicy($event)'/>
         Me compromento con la Pontifica Universidad Javeriana y la NOMBRE APLICACION, a dar el uso adecuado a la aplicación
       </label>
