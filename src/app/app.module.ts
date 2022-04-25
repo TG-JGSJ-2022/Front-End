@@ -17,6 +17,7 @@ import { WebcamModule } from 'ngx-webcam';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { SessionsComponent } from './pages/teacher/sessions/sessions.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     VideoCaptureComponent,
     CoursesComponent,
     RealTimeEmotionsComponent,
-    NavBarComponent
+    NavBarComponent,
+    SessionsComponent
   ],
   imports: [
     BrowserModule,
