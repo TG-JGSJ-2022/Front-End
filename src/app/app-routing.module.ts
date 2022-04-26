@@ -7,7 +7,7 @@ import { RealTimeEmotionsComponent } from './pages/teacher/real-time-emotions/re
 import { SessionsComponent } from './pages/teacher/sessions/sessions.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
+  { path: '', component: LoginComponent },
   // Teacher routes
   { path: 'courses', component: CoursesComponent },
   { path: 'modal', component: RealTimeEmotionsComponent}, 

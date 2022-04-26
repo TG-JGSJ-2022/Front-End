@@ -7,9 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SessionsComponent implements OnInit {
 
+  public sessions: any = [];
+
   constructor() { }
 
   ngOnInit(): void {
+    // Active session doesn't show into the table
+    this.sessions = [
+      {
+        "clase": 123, 
+        "fecha": "dd / mm / yyyy",
+        "estado": "Activa"
+      }, 
+      {
+        "clase": 456, 
+        "fecha": "dd / mm / yyyy",
+        "estado": "Finalizada"
+      }
+    ];
   }
 
 }

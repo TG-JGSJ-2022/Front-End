@@ -1,1 +1,29 @@
-<p>sessions works!</p>
+<p>Nav bar should go here</p>
+
+<div class="content-wrapper">
+
+    <div class="page-title">
+
+    </div>
+
+    <div class="sessions-wrapper">
+        <!-- Table Headers -->
+        <div class="headers-wrapper">        
+            <div class="table-header">Número clase</div>
+            <div class="table-header">Fecha</div>
+            <div class="table-header">Estado</div>
+            <div class="table-header">Información detallada</div>
+        </div>
+
+        <!-- Table rows -->
+        <div *ngFor="let session of sessions" class="row">
+            <div class="class-number"> {{ session.clase }} </div>
+            <div class="date"> {{ session.fecha }} </div>
+            <div class="state"> {{ session.estado }} </div>
+            <div class="more-info">
+                <button>Más información</button>
+            </div>
+        </div>
+    </div>
+
+</div>
