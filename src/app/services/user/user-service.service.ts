@@ -11,11 +11,12 @@ export class UserServiceService {
 
   API_ENDPOINT_LOGIN: string = environment.api_login;
   API_ENDPOINT_COURSES: string = environment.api_courses;
+  API_ENDPOINT_SESION_DATA:string =  environment.api_sesion_data;
 
   login(username: string, password: string) {
 
     const formHeaders = new HttpHeaders()
-      .append('Content-Type', 'application/json'); 
+      .append('Content-Type', 'application/json');
 
     const body = {'user': username, 'password': password};
 
@@ -28,16 +29,26 @@ export class UserServiceService {
   getTeacherCourses(username: string, userId: string | number) {
 
     const headers = new HttpHeaders()
-      .append('Content-Type', 'application/json'); 
+      .append('Content-Type', 'application/json');
 
     return this.http.get(this.API_ENDPOINT_COURSES + `?user=${username}&id=${userId}`, {
-      headers: headers
+      headers: headers,
+      withCredentials:true
     });
   }
 
   logout(){
     // const api_endpoint_logout: string = environment.api_logout;
-     
+
+  }
+
+  getDataSesion(id:number){
+    const headers = new HttpHeaders()
+      .append('Content-Type', 'application/json');
+
+    return this.http.get(this.API_ENDPOINT_SESION_DATA+`?id=${id}`, {
+
+    });
   }
 
 }

@@ -11,6 +11,7 @@ export const environment = {
   result_endpoint: `http://localhost:${SERVER_PORT}/resultado`,
   api_login: `http://localhost:${SERVER_PORT}/login`,
   api_courses: `http://localhost:${SERVER_PORT}/courses`,
+  api_sesion_data : `http://localhost:${SERVER_PORT}/info_sesion`
 };
 
 /*
