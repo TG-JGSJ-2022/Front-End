@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserServiceService } from '../../../services/user/user-service.service';
 
 
 
@@ -9,18 +10,51 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Graph1Component implements OnInit {
   public options: any;
-  constructor() {}
-
+  public const: any = {
+    "feliz": "positivo",
+    "triste": "negativo",
+    "confundido": "negativo",
+    "aburrido": "negativo",
+    "frustrado": "negativo",
+    "estresado": "negativo"
+  }
+  constructor(private userService: UserServiceService) { }
+  public data: any;
   ngOnInit(): void {
-    const xAxisData = [];
-    const data1 = [];
-    const data2 = [];
+    this.userService.getDataSesion(7).subscribe(response => {
+      console.log(response)
+      this.data = response;
+      this.graph()
+    }, (error) => {
+      this.data = {
+      }
+    })
 
-    for (let i = 0; i < 100; i++) {
-      xAxisData.push('category' + i);
-      data1.push((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5);
-      data2.push((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5);
-    }
+  }
+
+  graph(){
+    console.log(this.data)
+    const xAxisDataTime = this.data["dates"];
+    const good_emotios = [];
+    const bad_emotions = [];
+    console.log("hola");
+
+    console.log(xAxisDataTime)
+    this.data["dates"].forEach(date => {
+      let good = 0;
+      let bad = 0;
+      this.data["data"].forEach(d => {
+        if (d["fecha"] == date) {
+          if (this.const[d["emocion"]] == "positivo") {
+            good++;
+          }else{
+            bad++;
+          }
+        }
+      })
+      good_emotios.push(good);
+      bad_emotions.push(bad);
+    });
 
     this.options = {
       legend: {
@@ -29,29 +63,42 @@ export class Graph1Component implements OnInit {
       },
       tooltip: {},
       xAxis: {
-        data: xAxisData,
+        data: xAxisDataTime,
         silent: false,
         splitLine: {
           show: false,
         },
       },
       yAxis: {},
+      dataZoom: [
+        {
+          type: 'inside',
+        },
+      ],
       series: [
         {
-          name: 'bar',
+          name: 'positivo',
           type: 'bar',
-          data: data1,
+          data: good_emotios,
           animationDelay: (idx) => idx * 10,
+          itemStyle: {
+            color: 'rgb(35, 176, 0)'
+          }
         },
         {
-          name: 'bar2',
+          name: 'negativo',
           type: 'bar',
-          data: data2,
+          data: bad_emotions,
           animationDelay: (idx) => idx * 10 + 100,
+          itemStyle: {
+
+            color: 'rgb(252, 0, 0 )'
+          }
         },
       ],
       animationEasing: 'elasticOut',
       animationDelayUpdate: (idx) => idx * 5,
     };
+
   }
 }
