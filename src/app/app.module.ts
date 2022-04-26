@@ -16,14 +16,16 @@ import { WebcamModule } from 'ngx-webcam';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-
+import { NgxEchartsModule } from 'ngx-echarts';
+import { Graph1Component } from './pages/teacher/graph1/graph1.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     VideoCaptureComponent,
     CoursesComponent,
-    NavBarComponent
+    NavBarComponent,
+    Graph1Component
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,11 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     HttpClientModule,
     NgbModule,
     BrowserAnimationsModule,
-    TooltipModule.forRoot()
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts')
+    }),
+    TooltipModule.forRoot(),
+
   ],
   providers: [],
   bootstrap: [AppComponent]
