@@ -18,6 +18,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { Graph1Component } from './pages/teacher/graph1/graph1.component';
+import { GraphicsPageComponent } from './pages/teacher/graphics-page/graphics-page.component';
+import { MatSliderModule } from '@angular/material/slider';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +31,8 @@ import { Graph1Component } from './pages/teacher/graph1/graph1.component';
     VideoCaptureComponent,
     CoursesComponent,
     NavBarComponent,
-    Graph1Component
+    Graph1Component,
+    GraphicsPageComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +46,10 @@ import { Graph1Component } from './pages/teacher/graph1/graph1.component';
       echarts: () => import('echarts')
     }),
     TooltipModule.forRoot(),
+    MatSliderModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatProgressSpinnerModule
 
   ],
   providers: [],

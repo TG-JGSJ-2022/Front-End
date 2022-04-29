@@ -1,1 +1,7 @@
-<div echarts [options]="options" class="demo-chart"></div>
+<div *ngIf = "this.data === undefined">
+  <mat-spinner></mat-spinner>
+</div>
+<div class="graph">
+  <div echarts [options]="options" ></div>
+</div>
+

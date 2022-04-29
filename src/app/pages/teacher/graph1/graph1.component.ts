@@ -18,13 +18,16 @@ export class Graph1Component implements OnInit {
     "frustrado": "negativo",
     "estresado": "negativo"
   }
+
   constructor(private userService: UserServiceService) { }
   public data: any;
   ngOnInit(): void {
+    console.log(this.data);
     this.userService.getDataSesion(7).subscribe(response => {
       console.log(response)
       this.data = response;
       this.graph()
+      // this.example()
     }, (error) => {
       this.data = {
       }
@@ -58,7 +61,7 @@ export class Graph1Component implements OnInit {
 
     this.options = {
       legend: {
-        data: ['bar', 'bar2'],
+        data: ['Positivo', 'Negativo'],
         align: 'left',
       },
       tooltip: {},
@@ -66,10 +69,15 @@ export class Graph1Component implements OnInit {
         data: xAxisDataTime,
         silent: false,
         splitLine: {
-          show: false,
+          show: true,
         },
       },
-      yAxis: {},
+      yAxis: {
+        splitLine: {
+          show: false,
+        },
+
+      },
       dataZoom: [
         {
           type: 'inside',
@@ -77,7 +85,7 @@ export class Graph1Component implements OnInit {
       ],
       series: [
         {
-          name: 'positivo',
+          name: 'Positivo',
           type: 'bar',
           data: good_emotios,
           animationDelay: (idx) => idx * 10,
@@ -86,7 +94,7 @@ export class Graph1Component implements OnInit {
           }
         },
         {
-          name: 'negativo',
+          name: 'Negativo',
           type: 'bar',
           data: bad_emotions,
           animationDelay: (idx) => idx * 10 + 100,
