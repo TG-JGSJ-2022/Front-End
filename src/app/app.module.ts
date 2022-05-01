@@ -17,13 +17,14 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { NgxEchartsModule } from 'ngx-echarts';
-import { Graph1Component } from './pages/teacher/graph1/graph1.component';
-import { GraphicsPageComponent } from './pages/teacher/graphics-page/graphics-page.component';
+import { Graph1Component } from './pages/teacher/graphsTypes/avergeStudents/graph1/graph1.component';
+import { GraphicsPageComponent } from './pages/teacher/graphsTypes/graphics-page/graphics-page.component';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-
+import { Graph1ListComponent } from './pages/teacher/graphsTypes/avergeStudents/graph1-list/graph1-list.component';
+import {SelectorGrahp1Component} from'./pages/teacher/graphsTypes/avergeStudents/selector-grahp1/selector-grahp1.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     CoursesComponent,
     NavBarComponent,
     Graph1Component,
-    GraphicsPageComponent
+    GraphicsPageComponent,
+    Graph1ListComponent,
+    SelectorGrahp1Component
   ],
   imports: [
     BrowserModule,

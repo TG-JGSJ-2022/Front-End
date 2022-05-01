@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserServiceService } from '../../../services/user/user-service.service';
+import { UserServiceService } from '../../../../../services/user/user-service.service';
 
 
 
@@ -46,6 +46,7 @@ export class Graph1Component implements OnInit {
     this.data["dates"].forEach(date => {
       let good = 0;
       let bad = 0;
+      let students = 0;
       this.data["data"].forEach(d => {
         if (d["fecha"] == date) {
           if (this.const[d["emocion"]] == "positivo") {
@@ -53,10 +54,11 @@ export class Graph1Component implements OnInit {
           }else{
             bad++;
           }
+          students++;
         }
       })
-      good_emotios.push(good);
-      bad_emotions.push(bad);
+      good_emotios.push((good/students)*100);
+      bad_emotions.push((bad/students)*100);
     });
 
     this.options = {

@@ -1,21 +1,17 @@
-
-
 <div class="backgroud">
   <app-nav-bar></app-nav-bar>
   <mat-form-field appearance="fill">
     <mat-label>Tipo de grafica</mat-label>
     <mat-select [(value)]="stiles" (click)="change()">
       <mat-option *ngFor="let tipo of listaTipos" [value]="tipo">
-        {{tipo}}
+        {{ tipo }}
       </mat-option>
     </mat-select>
   </mat-form-field>
+
   <div class="conteiner">
-    <div class = "graph">
+    <div class="graph">
       <app-graph1></app-graph1>
     </div>
-
   </div>
-
 </div>
-

@@ -1,7 +1,7 @@
+<p>graph1-list works!</p>
 <div *ngIf = "this.data === undefined">
-  <mat-spinner></mat-spinner>
+  <mat-spinner class="load"></mat-spinner>
 </div>
 <div class="graph">
   <div echarts [options]="options" ></div>
 </div>
-
