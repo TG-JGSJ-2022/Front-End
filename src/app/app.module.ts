@@ -24,7 +24,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { Graph1ListComponent } from './pages/teacher/graphsTypes/avergeStudents/graph1-list/graph1-list.component';
-import {SelectorGrahp1Component} from'./pages/teacher/graphsTypes/avergeStudents/selector-grahp1/selector-grahp1.component';
+import {SelectorGraph1Component} from'./pages/teacher/graphsTypes/avergeStudents/selector-grahp1/selector-grahp1.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { StudensConectedComponent } from './pages/teacher/graphsTypes/studens-conected/studens-conected.component';
+// import { StudensConectedComponent } from './pages/teacher/graphsTypes/numberStudents/studens-conected/studens-conected.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +38,9 @@ import {SelectorGrahp1Component} from'./pages/teacher/graphsTypes/avergeStudents
     Graph1Component,
     GraphicsPageComponent,
     Graph1ListComponent,
-    SelectorGrahp1Component
+    SelectorGraph1Component,
+    StudensConectedComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -52,7 +57,8 @@ import {SelectorGrahp1Component} from'./pages/teacher/graphsTypes/avergeStudents
     MatSliderModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTabsModule
 
   ],
   providers: [],

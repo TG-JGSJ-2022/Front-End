@@ -1,17 +1,14 @@
 <div class="backgroud">
   <app-nav-bar></app-nav-bar>
-  <mat-form-field appearance="fill">
-    <mat-label>Tipo de grafica</mat-label>
-    <mat-select [(value)]="stiles" (click)="change()">
-      <mat-option *ngFor="let tipo of listaTipos" [value]="tipo">
-        {{ tipo }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+
 
   <div class="conteiner">
     <div class="graph">
-      <app-graph1></app-graph1>
+      <mat-tab-group>
+        <mat-tab label="Promedio Emociones"> <app-selector-grahp1></app-selector-grahp1> </mat-tab>
+        <mat-tab label="Estudiantes conectados"> <app-studens-conected></app-studens-conected> </mat-tab>
+        <mat-tab label="Third"> Content 3 </mat-tab>
+      </mat-tab-group>
     </div>
   </div>
 </div>

@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { UserServiceService } from 'src/app/services/user/user-service.service';
 
 @Component({
-  selector: 'app-graph1-list',
-  templateUrl: './graph1-list.component.html',
-  styleUrls: ['./graph1-list.component.css']
+  selector: 'app-studens-conected',
+  templateUrl: './studens-conected.component.html',
+  styleUrls: ['./studens-conected.component.css']
 })
-export class Graph1ListComponent implements OnInit {
+export class StudensConectedComponent implements OnInit {
 
   public options: any;
   public const: any = {
@@ -37,32 +37,25 @@ export class Graph1ListComponent implements OnInit {
   graph(){
     console.log(this.data)
     const xAxisDataTime = this.data["dates"];
-    const good_emotios = [];
-    const bad_emotions = [];
+    const num_students = [];
+
     console.log("hola");
 
     console.log(xAxisDataTime)
     this.data["dates"].forEach(date => {
-      let good = 0;
-      let bad = 0;
+
       let students = 0;
       this.data["data"].forEach(d => {
         if (d["fecha"] == date) {
-          if (this.const[d["emocion"]] == "positivo") {
-            good++;
-          }else{
-            bad++;
-          }
           students++;
         }
       })
-      good_emotios.push((good/students)*100);
-      bad_emotions.push((bad/students)*100);
+      num_students.push(students);
     });
 
     this.options = {
       legend: {
-        data: ['Positivo', 'Negativo'],
+        data: ['Estudiantes'],
         align: 'left',
       },
       tooltip: {},
@@ -86,22 +79,12 @@ export class Graph1ListComponent implements OnInit {
       ],
       series: [
         {
-          name: 'Positivo',
-          type: 'line',
-          data: good_emotios,
+          name: 'Estudiantes',
+          type: 'bar',
+          data: num_students,
           animationDelay: (idx) => idx * 10,
           itemStyle: {
-            color: 'rgb(35, 176, 0)'
-          }
-        },
-        {
-          name: 'Negativo',
-          type: 'line',
-          data: bad_emotions,
-          animationDelay: (idx) => idx * 10 + 100,
-          itemStyle: {
-
-            color: 'rgb(252, 0, 0 )'
+            color: 'rgb(35, 50, 91)'
           }
         },
       ],
@@ -110,5 +93,4 @@ export class Graph1ListComponent implements OnInit {
     };
 
   }
-
 }

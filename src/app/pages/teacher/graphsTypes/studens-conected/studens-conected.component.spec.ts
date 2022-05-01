@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SelectorGraph1Component } from './selector-grahp1.component';
+import { StudensConectedComponent } from './studens-conected.component';
 
-describe('SelectorGrahp1Component', () => {
-  let component: SelectorGraph1Component;
-  let fixture: ComponentFixture<SelectorGraph1Component>;
+describe('StudensConectedComponent', () => {
+  let component: StudensConectedComponent;
+  let fixture: ComponentFixture<StudensConectedComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SelectorGraph1Component ]
+      declarations: [ StudensConectedComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SelectorGraph1Component);
+    fixture = TestBed.createComponent(StudensConectedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
