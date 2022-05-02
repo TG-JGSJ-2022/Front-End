@@ -3,7 +3,7 @@ frontend:
   phases:
     preBuild:
       commands:
-        - npm run clean
+        - npm cache clean --force
         - rm -rf node_modules
         - npm ci
     build:
