@@ -1,24 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
 
 * {
-    font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 
-    box-sizing: border-box;
+  box-sizing: border-box;
 
-    /**/
-    --light-blue: #2b71db78;
-    --white: #FFFDFD;
+  /**/
+  --light-blue: #2b71db78;
+  --white: #fffdfd;
 
-    --black-faded: #00000078;
-
+  --black-faded: #00000078;
 }
 
 * input:focus {
-    outline: none;
-} 
+  outline: none;
+}
 
 body {
-    margin: 0;
+  margin: 0;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}

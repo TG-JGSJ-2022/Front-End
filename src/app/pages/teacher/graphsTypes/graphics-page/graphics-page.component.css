@@ -18,5 +18,11 @@
   border-radius: 10px;
   height: 75%;
   position: relative;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+.graph{
+  overflow:auto;
+  scroll-behavior: smooth;
 }
 

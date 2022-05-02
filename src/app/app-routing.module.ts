@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'capture', component: VideoCaptureComponent },
   { path: 'login', component: LoginComponent },
   { path: 'courses', component: CoursesComponent },
-  { path: '', component: GraphicsPageComponent }
+  { path: 'sesion', component: GraphicsPageComponent }
 ];
 
 @NgModule({

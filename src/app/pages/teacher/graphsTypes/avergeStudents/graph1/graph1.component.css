@@ -1,7 +1,11 @@
 .graph{
+  position:absolute;
   padding:10px;
   height:100%;
   width:100%;
+  top:50%;
+  left:50%;
+
 }
 .load{
   position:absolute;

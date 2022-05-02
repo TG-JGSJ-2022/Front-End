@@ -27,7 +27,9 @@ import { Graph1ListComponent } from './pages/teacher/graphsTypes/avergeStudents/
 import {SelectorGraph1Component} from'./pages/teacher/graphsTypes/avergeStudents/selector-grahp1/selector-grahp1.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { StudensConectedComponent } from './pages/teacher/graphsTypes/studens-conected/studens-conected.component';
-// import { StudensConectedComponent } from './pages/teacher/graphsTypes/numberStudents/studens-conected/studens-conected.component';
+import { EmotionStudentComponent } from './pages/teacher/graphsTypes/emotion-student/emotion-student.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +42,7 @@ import { StudensConectedComponent } from './pages/teacher/graphsTypes/studens-co
     Graph1ListComponent,
     SelectorGraph1Component,
     StudensConectedComponent,
+    EmotionStudentComponent,
 
   ],
   imports: [
@@ -58,8 +61,9 @@ import { StudensConectedComponent } from './pages/teacher/graphsTypes/studens-co
     MatFormFieldModule,
     MatSelectModule,
     MatProgressSpinnerModule,
-    MatTabsModule
-
+    MatTabsModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

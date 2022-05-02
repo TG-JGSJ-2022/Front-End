@@ -7,12 +7,11 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-
 </div>
 
 <div *ngIf="stiles == 'Barra'">
-  <app-graph1></app-graph1>
+  <app-graph1 [sesionId]="this.sesionId"></app-graph1>
 </div>
 <div *ngIf="stiles == 'Lista'">
-  <app-graph1-list></app-graph1-list>
+  <app-graph1-list [sesionId]="this.sesionId"></app-graph1-list>
 </div>

@@ -1,7 +1,6 @@
-<div *ngIf = "this.data === undefined">
+<div *ngIf="this.data !== undefined; else loading">
+  <div echarts [options]="options"></div>
+</div>
+<ng-template #loading>
   <mat-spinner class="load"></mat-spinner>
-</div>
-<div class="graph">
-  <div echarts [options]="options" ></div>
-</div>
-
+</ng-template>

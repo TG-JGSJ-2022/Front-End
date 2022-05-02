@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-selector-grahp1',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./selector-grahp1.component.css']
 })
 export class SelectorGraph1Component implements OnInit {
+  @Input()
+  public sesionId:number;
   public stiles:string = "Barra";
   public listaTipos:any = ["Barra","Lista"]
   constructor() { }

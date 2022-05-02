@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { UserServiceService } from 'src/app/services/user/user-service.service';
 
 @Component({
@@ -8,6 +8,8 @@ import { UserServiceService } from 'src/app/services/user/user-service.service';
 })
 export class StudensConectedComponent implements OnInit {
 
+  @Input()
+  public sesionId:number;
   public options: any;
   public const: any = {
     "feliz": "positivo",
@@ -21,9 +23,9 @@ export class StudensConectedComponent implements OnInit {
   constructor(private userService: UserServiceService) { }
   public data: any;
   ngOnInit(): void {
-    console.log(this.data);
-    this.userService.getDataSesion(7).subscribe(response => {
-      console.log(response)
+
+    this.userService.getDataSesion(this.sesionId).subscribe(response => {
+
       this.data = response;
       this.graph()
       // this.example()
@@ -35,13 +37,10 @@ export class StudensConectedComponent implements OnInit {
   }
 
   graph(){
-    console.log(this.data)
+
     const xAxisDataTime = this.data["dates"];
     const num_students = [];
 
-    console.log("hola");
-
-    console.log(xAxisDataTime)
     this.data["dates"].forEach(date => {
 
       let students = 0;

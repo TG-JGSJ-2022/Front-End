@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { UserServiceService } from '../../../../../services/user/user-service.service';
 
 
@@ -9,6 +9,8 @@ import { UserServiceService } from '../../../../../services/user/user-service.se
   styleUrls: ['./graph1.component.css']
 })
 export class Graph1Component implements OnInit {
+  @Input()
+  public sesionId:number;
   public options: any;
   public const: any = {
     "feliz": "positivo",
@@ -22,9 +24,9 @@ export class Graph1Component implements OnInit {
   constructor(private userService: UserServiceService) { }
   public data: any;
   ngOnInit(): void {
-    console.log(this.data);
-    this.userService.getDataSesion(7).subscribe(response => {
-      console.log(response)
+
+    this.userService.getDataSesion(this.sesionId).subscribe(response => {
+
       this.data = response;
       this.graph()
       // this.example()
@@ -36,13 +38,12 @@ export class Graph1Component implements OnInit {
   }
 
   graph(){
-    console.log(this.data)
+
     const xAxisDataTime = this.data["dates"];
     const good_emotios = [];
     const bad_emotions = [];
-    console.log("hola");
 
-    console.log(xAxisDataTime)
+
     this.data["dates"].forEach(date => {
       let good = 0;
       let bad = 0;
