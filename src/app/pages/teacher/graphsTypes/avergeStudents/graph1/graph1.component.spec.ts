@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RealTimeEmotionsComponent } from './real-time-emotions.component';
+import { Graph1Component } from './graph1.component';
 
-describe('RealTimeEmotionsComponent', () => {
-  let component: RealTimeEmotionsComponent;
-  let fixture: ComponentFixture<RealTimeEmotionsComponent>;
+describe('Graph1Component', () => {
+  let component: Graph1Component;
+  let fixture: ComponentFixture<Graph1Component>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RealTimeEmotionsComponent ]
+      declarations: [ Graph1Component ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RealTimeEmotionsComponent);
+    fixture = TestBed.createComponent(Graph1Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,23 @@
+<div class="backgroud">
+  <app-nav-bar></app-nav-bar>
+
+  <div class="conteiner">
+    <mat-tab-group>
+      <mat-tab label="Promedio Emociones" class="graph">
+        <div class="graph">
+          <app-selector-grahp1 [sesionId] = "this.sesionId"></app-selector-grahp1>
+        </div>
+      </mat-tab>
+      <mat-tab label="Estudiantes conectados" class="graph">
+        <div class="graph">
+          <app-studens-conected [sesionId] = "this.sesionId"></app-studens-conected>
+        </div>
+      </mat-tab>
+      <mat-tab label="Información por estudiante" class="graph">
+        <div class="graph">
+          <app-emotion-student [sesionId] = "this.sesionId"></app-emotion-student>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
