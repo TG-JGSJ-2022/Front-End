@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 import { Results } from '../interfaces/results';
 
 @Injectable({
@@ -10,7 +10,7 @@ import { Results } from '../interfaces/results';
 export class ModalServiceService {
 
   constructor(private http: HttpClient) {
-    
+
    }
    getResultsPrediction(): Observable<Results[]>{
     return this.http.get<Results[]>(environment.result_endpoint, {});
