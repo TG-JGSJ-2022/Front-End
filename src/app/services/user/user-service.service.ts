@@ -10,6 +10,7 @@ export class UserServiceService {
   constructor(private http: HttpClient) { }
 
   API_ENDPOINT_LOGIN: string = environment.api_login;
+  API_ENDPOINT_LOGOUT: string = environment.api_logout;
   API_ENDPOINT_COURSES: string = environment.api_courses;
   API_ENDPOINT_SESION_DATA:string =  environment.api_sesion_data;
 
@@ -38,7 +39,12 @@ export class UserServiceService {
   }
 
   logout(){
-    // const api_endpoint_logout: string = environment.api_logout;
+    const formHeaders = new HttpHeaders()
+      .append('Content-Type', 'application/json');
+    return this.http.post(this.API_ENDPOINT_LOGOUT, {}, {
+      headers: formHeaders,
+      withCredentials: true
+    });
 
   }
 

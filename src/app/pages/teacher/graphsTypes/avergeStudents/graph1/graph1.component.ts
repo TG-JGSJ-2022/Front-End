@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { UserServiceService } from '../../../services/user/user-service.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { UserServiceService } from '../../../../../services/user/user-service.service';
 
 
 
@@ -9,6 +9,8 @@ import { UserServiceService } from '../../../services/user/user-service.service'
   styleUrls: ['./graph1.component.css']
 })
 export class Graph1Component implements OnInit {
+  @Input()
+  public sesionId:number;
   public options: any;
   public const: any = {
     "feliz": "positivo",
@@ -18,13 +20,16 @@ export class Graph1Component implements OnInit {
     "frustrado": "negativo",
     "estresado": "negativo"
   }
+
   constructor(private userService: UserServiceService) { }
   public data: any;
   ngOnInit(): void {
-    this.userService.getDataSesion(7).subscribe(response => {
-      console.log(response)
+
+    this.userService.getDataSesion(this.sesionId).subscribe(response => {
+
       this.data = response;
       this.graph()
+      // this.example()
     }, (error) => {
       this.data = {
       }
@@ -33,16 +38,16 @@ export class Graph1Component implements OnInit {
   }
 
   graph(){
-    console.log(this.data)
+
     const xAxisDataTime = this.data["dates"];
     const good_emotios = [];
     const bad_emotions = [];
-    console.log("hola");
 
-    console.log(xAxisDataTime)
+
     this.data["dates"].forEach(date => {
       let good = 0;
       let bad = 0;
+      let students = 0;
       this.data["data"].forEach(d => {
         if (d["fecha"] == date) {
           if (this.const[d["emocion"]] == "positivo") {
@@ -50,15 +55,16 @@ export class Graph1Component implements OnInit {
           }else{
             bad++;
           }
+          students++;
         }
       })
-      good_emotios.push(good);
-      bad_emotions.push(bad);
+      good_emotios.push((good/students)*100);
+      bad_emotions.push((bad/students)*100);
     });
 
     this.options = {
       legend: {
-        data: ['bar', 'bar2'],
+        data: ['Positivo', 'Negativo'],
         align: 'left',
       },
       tooltip: {},
@@ -66,10 +72,15 @@ export class Graph1Component implements OnInit {
         data: xAxisDataTime,
         silent: false,
         splitLine: {
-          show: false,
+          show: true,
         },
       },
-      yAxis: {},
+      yAxis: {
+        splitLine: {
+          show: false,
+        },
+
+      },
       dataZoom: [
         {
           type: 'inside',
@@ -77,7 +88,7 @@ export class Graph1Component implements OnInit {
       ],
       series: [
         {
-          name: 'positivo',
+          name: 'Positivo',
           type: 'bar',
           data: good_emotios,
           animationDelay: (idx) => idx * 10,
@@ -86,7 +97,7 @@ export class Graph1Component implements OnInit {
           }
         },
         {
-          name: 'negativo',
+          name: 'Negativo',
           type: 'bar',
           data: bad_emotions,
           animationDelay: (idx) => idx * 10 + 100,
