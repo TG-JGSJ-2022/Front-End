@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./graphics-page.component.css']
 })
 export class GraphicsPageComponent implements OnInit {
-  public sesionId:number = 7;
+  public sesionId:number = 10;
   constructor(private router: Router) { }
 
   ngOnInit(): void {

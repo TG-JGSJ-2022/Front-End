@@ -53,7 +53,7 @@ export class UserServiceService {
       .append('Content-Type', 'application/json');
 
     return this.http.get(this.API_ENDPOINT_SESION_DATA+`?id=${id}`, {
-      headers: formHeaders,
+      headers: headers,
       withCredentials: true
     });
   }

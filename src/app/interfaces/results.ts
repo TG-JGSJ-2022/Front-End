@@ -4,4 +4,5 @@ export class Results {
     porcentaje: number;
     estudiante_id: number;
     fecha: Date;
+    status: number;
 }
