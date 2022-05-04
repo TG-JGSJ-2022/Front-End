@@ -11,17 +11,26 @@ footer {
   
   .page-header{
     text-align:center;
-    margin-top: 5%;
+    margin-top: 3%;
+    margin-bottom: 1%;
   }
   
   .info{
     text-align: justify;
     text-justify: inter-word;
-    margin-top: 5%;
+    margin-top: 1%;
     margin-left: 5%;
     margin-right: 5%;
   }
-  
+
+  .permiso{
+    text-align: justify;
+    text-justify: inter-word;
+    margin-top: 1%;
+    margin-left: 6%;
+    margin-right: 5%;
+  }
+
   .camera{
     padding-top: 20px;
     text-align: center;

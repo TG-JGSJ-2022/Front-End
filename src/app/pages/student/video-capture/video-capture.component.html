@@ -1,8 +1,9 @@
 <router-outlet></router-outlet>
+<app-nav-bar></app-nav-bar>
 <div class='page-header'>
-  <h1>
+  <h2>
     Capturador de expresiones faciales de la PUJ
-  </h1>
+  </h2>
 </div>
 
 <div>
@@ -13,7 +14,7 @@
       debes manifestar que estás de acuerdo con que tus datos serán tratados acorde a la <a href = 'https://www.javeriana.edu.co/documents/10179/9567882/Acuerdo+No+657.pdf'>política de protección de datos personales</a>
       y la <a href = 'https://www.javeriana.edu.co/documentos/tratamiento_datos_personales.pdf'>política de tratamiento de datos personales</a>
     </h2>
-    <label>
+    <label class="permiso">
       <input type='checkbox' [checked]="acceptPolicy" (click)='validatePolicy($event)'/>
       Autorizo que la Pontifica Universidad Javeriana haga uso de mis datos personales acorde a la política de protección y privacidad de datos
     </label>
