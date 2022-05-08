@@ -16,6 +16,7 @@ import { WebcamModule } from 'ngx-webcam';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { SessionsComponent } from './pages/teacher/sessions/sessions.component';
 import { AgreementComponent } from './pages/teacher/agreement/agreement.component';
 
 import { NgxEchartsModule } from 'ngx-echarts';
@@ -39,6 +40,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     LoginComponent,
     VideoCaptureComponent,
     CoursesComponent,
+    RealTimeEmotionsComponent,
+    NavBarComponent,
+    SessionsComponent,
     NavBarComponent,
     AgreementComponent,
     Graph1Component,

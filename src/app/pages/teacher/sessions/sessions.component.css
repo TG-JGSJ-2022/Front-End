@@ -1,0 +1,33 @@
+.sessions-wrapper {
+
+    margin-inline: auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    justify-content: center;
+
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+
+    font-size: 1.1rem;
+}
+.table-header {
+    margin-bottom: 15px;
+
+    font-weight: 500;
+    font-size: 1.4rem;
+}
+
+.more-info button {
+    border: none;
+    border-radius: 15px;
+}
+.more-info button:hover {
+    background-color: aliceblue;
+}
+.more-info button:active {
+    background-color: aquamarine;
+}
