@@ -1,11 +1,43 @@
 <header>
+    <ng-template #content let-modal>
+        <div class="modal-header">
+            <h6 class="modal-title">Sesión {{sesion_date}} - {{class_name}} </h6>
+       </div>
+        <div class="modal-body">
+            <p>{{studentsOnline}} estudiantes conectados</p>
+            <div class="positive"> 
+                <div class="result">
+                    <div >
+                        {{positiveResult}}%                    
+                        <img class="emoji" src="../../../../assets/images/positive_emotions.png">
+                    </div>
+                </div>
+            </div>
+            <div class="negative">
+                <div class="result"> 
+                    <div>
+                    <ng-template #tolTemplate>Alerta! 
+                        <li *ngFor="let emocion of emociones">
+                            {{emocion.nombre}}: {{emocion.porcentaje}}%
+                        </li> 
+                    </ng-template>     
+                        {{negativeResult}}% 
+                        <img class="emoji" src="../../../../assets/images/negative_emotions.png" [tooltip]="tolTemplate" placement="right">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Finalizar clase</button>
+        </div>
+    </ng-template>
     <nav class="navBar">
         <div class="TituloNav">
         <h1>Nombre App</h1>
         </div>
         <ul>
-            <li *ngIf="activeClass" (click)="claseActiva()"><a href="#">Clase Activa</a></li>
-            <button (click)="logout()">Cerrar sesión</button>
+            <li *ngIf="activeClass" (click)="claseActiva(content)"><button id="modalButton">Clase Activa</button></li>
+            <button class="logout" (click)="logout()">Cerrar sesión</button>
         </ul>
     </nav>
 </header>

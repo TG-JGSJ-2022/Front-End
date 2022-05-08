@@ -5,15 +5,20 @@ import { VideoCaptureComponent } from './pages/student/video-capture/video-captu
 import { CoursesComponent } from './pages/teacher/courses/courses.component';
 import { RealTimeEmotionsComponent } from './pages/teacher/real-time-emotions/real-time-emotions.component';
 import { SessionsComponent } from './pages/teacher/sessions/sessions.component';
+import { AgreementComponent } from './pages/teacher/agreement/agreement.component';
+import { GraphicsPageComponent } from './pages/teacher/graphsTypes/graphics-page/graphics-page.component';
+
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   // Teacher routes
   { path: 'courses', component: CoursesComponent },
-  { path: 'modal', component: RealTimeEmotionsComponent}, 
-  { path: 'sessions', component: SessionsComponent}, 
+  { path: 'modal', component: RealTimeEmotionsComponent }, 
+  { path: 'sessions', component: SessionsComponent },
+  { path: 'sesion', component: GraphicsPageComponent },
   // Student routes
   { path: 'capture', component: VideoCaptureComponent },
+  { path: 'agreement', component: AgreementComponent },
 ];
 
 @NgModule({
