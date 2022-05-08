@@ -10,7 +10,6 @@ import { CoursesComponent } from './pages/teacher/courses/courses.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { WebcamModule } from 'ngx-webcam';
 import { FormsModule } from '@angular/forms';
@@ -40,7 +39,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     LoginComponent,
     VideoCaptureComponent,
     CoursesComponent,
-    RealTimeEmotionsComponent,
     NavBarComponent,
     SessionsComponent,
     NavBarComponent,

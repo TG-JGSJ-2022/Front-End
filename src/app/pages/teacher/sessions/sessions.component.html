@@ -1,4 +1,4 @@
-<p>Nav bar should go here</p>
+
 
 <div class="content-wrapper">
 
@@ -8,18 +8,18 @@
 
     <div class="sessions-wrapper">
         <!-- Table Headers -->
-        <div class="table-header">Número clase</div>
+        <div class="table-header">Id sesión</div>
         <div class="table-header">Fecha</div>
         <div class="table-header">Estado</div>
         <div class="table-header">Información detallada</div>
 
         <!-- Table rows -->
-        <ng-container *ngFor="let session of sessions">
-            <div class="class-number"> {{ session.clase }} </div>
+        <ng-container *ngFor="let session of sessions; index as i">
+            <div class="class-number"> {{ session.id }} </div>
             <div class="date"> {{ session.fecha }} </div>
             <div class="state"> {{ session.estado }} </div>
             <div class="more-info">
-                <button>Más información</button>
+                <button (click)="redirectToSession(i)">Más información</button>
             </div>
         </ng-container>
     </div>

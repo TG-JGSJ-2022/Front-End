@@ -24,8 +24,10 @@ export class LoginComponent implements OnInit {
   userLogo: string = '/assets/images/userLogo.svg';
   passwordLogo: string = '/assets/images/passwordLogo.svg';
 
-  constructor(private router: Router,
-    private userService: UserServiceService) { }
+  constructor(
+    private router: Router,
+    private userService: UserServiceService
+  ) { }
 
   ngOnInit(): void {
     if (sessionStorage.getItem('user')) {
