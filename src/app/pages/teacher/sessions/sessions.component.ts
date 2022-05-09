@@ -28,7 +28,7 @@ export class SessionsComponent implements OnInit {
           this.sessions = data;
           console.log(data);
         }, (error) => {
-          // this.router.navigate([`/courses`]);
+          this.router.navigate([`/courses`]);
         });
   }
 
