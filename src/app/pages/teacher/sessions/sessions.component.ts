@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserServiceService } from 'src/app/services/user/user-service.service';
 
 @Component({
   selector: 'app-sessions',
@@ -8,23 +10,30 @@ import { Component, OnInit } from '@angular/core';
 export class SessionsComponent implements OnInit {
 
   public sessions: any = [];
+  private username: string;
+  private courseId: string;
 
-  constructor() { }
+  constructor(
+    private readonly route: ActivatedRoute,
+    private readonly router: Router, 
+    private readonly userService: UserServiceService,
+  ) { }
 
   ngOnInit(): void {
-    // Active session doesn't show into the table
-    this.sessions = [
-      {
-        "clase": 123, 
-        "fecha": "dd / mm / yyyy",
-        "estado": "Activa"
-      }, 
-      {
-        "clase": 456, 
-        "fecha": "dd / mm / yyyy",
-        "estado": "Finalizada"
-      }
-    ];
+    this.username = sessionStorage.getItem('user');
+    this.courseId = this.route.snapshot.paramMap.get('courseId');
+
+    this.userService.getCouseSessions(this.username, this.courseId)
+        .subscribe( (data: any[]) => {
+          this.sessions = data;
+          console.log(data);
+        }, (error) => {
+          // this.router.navigate([`/courses`]);
+        });
+  }
+
+  redirectToSession(index: number) {
+    this.router.navigate([`/sesion/${this.sessions[index].id}`]);
   }
 
 }
