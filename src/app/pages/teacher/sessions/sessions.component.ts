@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserServiceService } from 'src/app/services/user/user-service.service';
 
@@ -9,6 +9,7 @@ import { UserServiceService } from 'src/app/services/user/user-service.service';
 })
 export class SessionsComponent implements OnInit {
 
+  public courseName: string;
   public sessions: any = [];
   private username: string;
   private courseId: string;
@@ -19,9 +20,13 @@ export class SessionsComponent implements OnInit {
     private readonly userService: UserServiceService,
   ) { }
 
-  ngOnInit(): void {
+  // TODO : Sort sessions in asending order based on date
+  ngOnInit(): void | Promise<boolean> {
     this.username = sessionStorage.getItem('user');
     this.courseId = this.route.snapshot.paramMap.get('courseId');
+    this.courseName = sessionStorage.getItem('courseName');
+
+    if (!this.courseName) return this.router.navigate(['/courses']);
 
     this.userService.getCouseSessions(this.username, this.courseId)
         .subscribe( (data: any[]) => {
