@@ -9,7 +9,6 @@ import { GraphicsPageComponent } from './pages/teacher/graphsTypes/graphics-page
 
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
   // Teacher routes
   { path: 'courses', component: CoursesComponent },
   { path: 'sessions/:courseId', component: SessionsComponent },
@@ -17,6 +16,8 @@ const routes: Routes = [
   // Student routes
   { path: 'capture', component: VideoCaptureComponent },
   { path: 'agreement', component: AgreementComponent },
+  // Default
+  { path: '', component: LoginComponent },
 ];
 
 @NgModule({

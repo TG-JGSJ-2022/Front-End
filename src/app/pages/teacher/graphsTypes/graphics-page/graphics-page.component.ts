@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NavBarComponent } from 'src/app/nav-bar/nav-bar.component';
+import { NavBarComponent } from 'src/app/pages/shared/nav-bar/nav-bar.component';
 
 @Component({
   selector: 'app-graphics-page',
