@@ -33,7 +33,8 @@ export class CoursesComponent implements OnInit {
     this.fillTeacherCoursesArray();
   }
 
-  redirectToCourseSessions(courseId: string) {
+  redirectToCourseSessions(courseId: string, courseName: string) {
+    sessionStorage.setItem('courseName', courseName);
     this.router.navigate([`/sessions/${courseId}`]);
   }
 
