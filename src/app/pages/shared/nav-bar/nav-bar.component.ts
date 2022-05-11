@@ -78,13 +78,15 @@ export class NavBarComponent implements OnInit {
   }
 
   logout(): void {
-    sessionStorage.clear();
     this.userServices.logout().subscribe(res=>{
       console.log("respuesta "+res)
       sessionStorage.clear();
+      this.router.navigate(["/login"]);
 
+    }, err =>{
+      console.log(err);
     });
-    this.router.navigate(["/login"]);
+
   }
 
   claseActiva(content) : void {

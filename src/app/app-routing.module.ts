@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'agreement', component: AgreementComponent },
   // Default
   { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({

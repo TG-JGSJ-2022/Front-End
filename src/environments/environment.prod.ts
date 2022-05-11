@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   model_endpoint: `${url}/recibir-imagen`,
   result_endpoint: `${url}/resultado`,
-  api_login: `http://servidorflaskprueba-env-1.eba-2wecp7sf.us-east-1.elasticbeanstalk.com/login`,
+  api_login: `${url}/login`,
   api_logout: `${url}/logout`,
   api_courses: `${url}/courses`,
   api_course_sessions: `${url}/course-sessions`,

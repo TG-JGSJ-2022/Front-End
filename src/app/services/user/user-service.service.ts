@@ -28,7 +28,7 @@ export class UserServiceService {
     });
   }
 
-  
+
   logout(){
     const formHeaders = new HttpHeaders()
     .append('Content-Type', 'application/json');
@@ -36,9 +36,9 @@ export class UserServiceService {
       headers: formHeaders,
       withCredentials: true
     });
-    
+
   }
-  
+
   getCouseSessions(username:string, courseId: string) {
     const headers = new HttpHeaders().append('Content-Type', 'application/json');
 
@@ -51,18 +51,18 @@ export class UserServiceService {
   getDataSesion(id:number){
     const headers = new HttpHeaders()
     .append('Content-Type', 'application/json');
-    
+
     return this.http.get(this.API_ENDPOINT_SESION_DATA+`?id=${id}`, {
       headers: headers,
       withCredentials: true
     });
   }
-  
+
   getTeacherCourses(username: string, userId: string | number) {
-  
+
     const headers = new HttpHeaders()
       .append('Content-Type', 'application/json');
-  
+
     return this.http.get(this.API_ENDPOINT_COURSES + `?user=${username}&id=${userId}`, {
       headers: headers,
       withCredentials:true
