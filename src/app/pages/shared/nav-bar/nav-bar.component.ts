@@ -24,7 +24,7 @@ export class NavBarComponent implements OnInit {
       this.alive = true;
       this.interval = 10000;
     }
-  
+
   activeClass: boolean = true;
   studentsOnline: number = 0;
   positiveResult: number = 0;
@@ -62,7 +62,7 @@ export class NavBarComponent implements OnInit {
   public sortedData = [];
   ngOnInit(): void {
     //if(sessionStorage.getItem('activeclass')) {
-      //console.log("Clase activa, NO puede cerrar sesión ")     
+      //console.log("Clase activa, NO puede cerrar sesión ")
       this.studentsOnline = 0;
       this.positiveResult = 0;
       this.negativeResult = 0;
@@ -80,7 +80,7 @@ export class NavBarComponent implements OnInit {
   logout(): void {
     sessionStorage.clear();
     this.userServices.logout().subscribe(res=>{
-      console.log(res)
+      console.log("respuesta "+res)
       sessionStorage.clear();
 
     });

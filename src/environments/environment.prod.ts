@@ -1,13 +1,14 @@
-const SERVER_PORT = '5000';
+const port = '5000';
 const NEURAL_NETWORK_PORT = '8080';
-
+// const url = "http://servidorflaskprueba-env-1.eba-2wecp7sf.us-east-1.elasticbeanstalk.com"
+const url = "http://localhost:5000"
 export const environment = {
   production: false,
-  model_endpoint: `http://localhost:${SERVER_PORT}/recibir-imagen`,
-  result_endpoint: `http://localhost:${SERVER_PORT}/resultado`,
-  api_login: `http://localhost:${SERVER_PORT}/login`,
-  api_logout: `http://localhost:${SERVER_PORT}/logout`,
-  api_courses: `http://localhost:${SERVER_PORT}/courses`,
-  api_course_sessions: `http://localhost:${SERVER_PORT}/course-sessions`,
-  api_sesion_data : `http://localhost:${SERVER_PORT}/info_sesion`
+  model_endpoint: `${url}/recibir-imagen`,
+  result_endpoint: `${url}/resultado`,
+  api_login: `http://servidorflaskprueba-env-1.eba-2wecp7sf.us-east-1.elasticbeanstalk.com/login`,
+  api_logout: `${url}/logout`,
+  api_courses: `${url}/courses`,
+  api_course_sessions: `${url}/course-sessions`,
+  api_sesion_data : `${url}/info_sesion`
 };
