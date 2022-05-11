@@ -2,18 +2,21 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-const SERVER_PORT = '5000';
+const port = '5000';
 const NEURAL_NETWORK_PORT = '8080';
-
+const url = "http://servidorflaskprueba-env-1.eba-2wecp7sf.us-east-1.elasticbeanstalk.com"
+// const url = "http://localhost:5000"
 export const environment = {
   production: false,
-  model_endpoint: `http://localhost:${SERVER_PORT}/recibir-imagen`,
-  result_endpoint: `http://localhost:${SERVER_PORT}/resultado`,
-  api_login: `http://localhost:${SERVER_PORT}/login`,
-  api_logout: `http://localhost:${SERVER_PORT}/logout`,
-  api_courses: `http://localhost:${SERVER_PORT}/courses`,
-  api_sesion_data : `http://localhost:${SERVER_PORT}/info_sesion`
+  model_endpoint: `${url}/recibir-imagen`,
+  result_endpoint: `${url}/resultado`,
+  api_login: `${url}/login`,
+  api_logout: `${url}/logout`,
+  api_courses: `${url}/courses`,
+  api_course_sessions: `${url}/course-sessions`,
+  api_sesion_data : `${url}/info_sesion`
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file

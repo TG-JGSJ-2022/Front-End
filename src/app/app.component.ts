@@ -9,23 +9,14 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'Front-End';
 
-  constructor(private router: Router) {
+  constructor(
+    private readonly router: Router
+  ) {
 
   }
-  ngOnInit() {
-
-    // console.log(sessionStorage.getItem("id"))
-    // if (!sessionStorage.getItem("id")) {
-    //   console.log("entra anull")
-    //   this.router.navigate(["/login"]);
-    // } else {
-    //   if (sessionStorage.getItem("rol") == "estudiante") {
-    //     this.router.navigate(["/capture"]);
-    //   }
-    //   else {
-    //     this.router.navigate(["/courses"]);
-    //   }
-    // }
+  ngOnInit() : void | Promise<boolean> {
+    if (!sessionStorage.getItem('user')) 
+      return this.router.navigateByUrl('/');
   }
 
 }

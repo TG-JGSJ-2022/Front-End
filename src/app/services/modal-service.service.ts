@@ -13,6 +13,8 @@ export class ModalServiceService {
 
    }
    getResultsPrediction(): Observable<Results[]>{
-    return this.http.get<Results[]>(environment.result_endpoint, {});
+    return this.http.get<Results[]>(environment.result_endpoint, {
+      withCredentials: true
+    });
   }
 }

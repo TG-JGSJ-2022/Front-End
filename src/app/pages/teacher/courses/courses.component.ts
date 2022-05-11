@@ -16,10 +16,6 @@ export class CoursesComponent implements OnInit {
   username: string = ''; 
   userId: string = '';
 
-  // TODO :
-  // This function should call the backend in order 
-  // to fill the array of courses, but at this point the 
-  // courses will be mocked
   fillTeacherCoursesArray(): void {
     this.userService.getTeacherCourses(this.username, this.userId)
         .subscribe( (data) => {
@@ -35,6 +31,11 @@ export class CoursesComponent implements OnInit {
     this.userId = sessionStorage.getItem('id'); 
 
     this.fillTeacherCoursesArray();
+  }
+
+  redirectToCourseSessions(courseId: string, courseName: string) {
+    sessionStorage.setItem('courseName', courseName);
+    this.router.navigate([`/sessions/${courseId}`]);
   }
 
 }
