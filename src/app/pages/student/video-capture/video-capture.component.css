@@ -95,3 +95,7 @@ footer {
     background-color: var(--select-arrow);
     clip-path: polygon(100% 0%, 0 0%, 50% 100%);
   }
+
+  .footer {
+    font-size: 8px;
+  }

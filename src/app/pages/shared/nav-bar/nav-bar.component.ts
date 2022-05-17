@@ -1,10 +1,11 @@
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 import { UserServiceService } from 'src/app/services/user/user-service.service';
 import { ModalServiceService } from 'src/app/services/modal-service.service';
 import { Results } from 'src/app/interfaces/results';
 import { TimerObservable } from 'rxjs-compat/observable/TimerObservable'
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { TimerObservable } from 'rxjs-compat/observable/TimerObservable'
   encapsulation: ViewEncapsulation.None,
   styleUrls: ['./nav-bar.component.css']
 })
-export class NavBarComponent implements OnInit {
+export class NavBarComponent implements OnInit, OnDestroy {
 
   constructor(
     private router: Router,
@@ -60,6 +61,7 @@ export class NavBarComponent implements OnInit {
     'Frustrado' : this.em_5
   }
   public sortedData = [];
+  subscription: Subscription;
   ngOnInit(): void {
     //if(sessionStorage.getItem('activeclass')) {
       //console.log("Clase activa, NO puede cerrar sesión ")
@@ -67,14 +69,16 @@ export class NavBarComponent implements OnInit {
       this.positiveResult = 0;
       this.negativeResult = 0;
       this.estudiantes = [];
-      TimerObservable.create(0, this.interval)
+      this.subscription = TimerObservable.create(0, this.interval)
       //.takeWhile(() => this.alive)
       .subscribe(() =>{
         this.update_data();
-        console.log('rest');
       });
     //}
 
+  }
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
   }
 
   logout(): void {
@@ -115,7 +119,10 @@ export class NavBarComponent implements OnInit {
       }else{
         btn.style.visibility = 'visible';
         console.log("else");
-        let date = new Date(results[0].fecha); //Debe ser desde la tabla sesion
+        
+        //Debe ser desde la tabla sesion
+        let date = new Date(results[0].fecha); 
+        
         const day = date.toLocaleString('default', {day: '2-digit'});
         const month = date.toLocaleString('default', {month: 'long'});
         this.sesion_date = day + ' de ' + month ;
