@@ -23,10 +23,10 @@ export class StudensConectedComponent implements OnInit {
   constructor(private userService: UserServiceService) { }
   public data: any;
   ngOnInit(): void {
-
+    console.log(this.sesionId)
     this.userService.getDataSesion(this.sesionId).subscribe(response => {
-
       this.data = response;
+      console.log(this.data)
       this.graph()
       // this.example()
     }, (error) => {
