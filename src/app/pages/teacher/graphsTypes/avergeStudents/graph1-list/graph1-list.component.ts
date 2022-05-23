@@ -63,7 +63,7 @@ export class Graph1ListComponent implements OnInit {
 
     this.options = {
       legend: {
-        data: ['Positivo', 'Negativo'],
+        data: ['No Alerta', 'Alerta'],
         align: 'left',
       },
       tooltip: {},
@@ -87,7 +87,7 @@ export class Graph1ListComponent implements OnInit {
       ],
       series: [
         {
-          name: 'Positivo',
+          name: 'No Alerta',
           type: 'line',
           data: good_emotios,
           animationDelay: (idx) => idx * 10,
@@ -96,7 +96,7 @@ export class Graph1ListComponent implements OnInit {
           }
         },
         {
-          name: 'Negativo',
+          name: 'Alerta',
           type: 'line',
           data: bad_emotions,
           animationDelay: (idx) => idx * 10 + 100,
