@@ -10,5 +10,6 @@ export const environment = {
   api_logout: `${url}/logout`,
   api_courses: `${url}/courses`,
   api_course_sessions: `${url}/course-sessions`,
-  api_sesion_data : `${url}/info_sesion`
+  api_sesion_data : `${url}/info_sesion`,
+  api_profesor_sesion: `${url}/profesor-sesion`
 };

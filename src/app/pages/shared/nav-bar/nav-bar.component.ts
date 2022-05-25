@@ -5,7 +5,9 @@ import { UserServiceService } from 'src/app/services/user/user-service.service';
 import { ModalServiceService } from 'src/app/services/modal-service.service';
 import { Results } from 'src/app/interfaces/results';
 import { TimerObservable } from 'rxjs-compat/observable/TimerObservable'
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { Horarios } from 'src/app/interfaces/horarios';
+import { Time } from '@angular/common';
 
 
 @Component({
@@ -25,7 +27,11 @@ export class NavBarComponent implements OnInit, OnDestroy {
       this.alive = true;
       this.interval = 10000;
     }
-
+  timer : any;
+  username: string = ''; 
+  userId: string = '';
+  horarios: Horarios[];
+  hoy_dia: string;
   activeClass: boolean = true;
   studentsOnline: number = 0;
   positiveResult: number = 0;
@@ -39,6 +45,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
   emociones = [
   ];
   estudiantes = [];
+  private timer_b: boolean = false;
   private alive: boolean;
   private interval: number;
   emocion_1 = 'Triste';
@@ -62,25 +69,20 @@ export class NavBarComponent implements OnInit, OnDestroy {
   }
   public sortedData = [];
   subscription: Subscription;
+  subscriptionHora: Subscription;
   ngOnInit(): void {
-    //if(sessionStorage.getItem('activeclass')) {
-      //console.log("Clase activa, NO puede cerrar sesión ")
-      this.studentsOnline = 0;
-      this.positiveResult = 0;
-      this.negativeResult = 0;
-      this.estudiantes = [];
-      this.subscription = TimerObservable.create(0, this.interval)
-      //.takeWhile(() => this.alive)
-      .subscribe(() =>{
-        this.update_data();
-      });
-    //}
 
+    this.studentsOnline = 0;
+    this.positiveResult = 0;
+    this.negativeResult = 0;
+    this.estudiantes = [];
+    this.nextHour();
   }
   ngOnDestroy(){
     this.subscription.unsubscribe();
+    this.subscriptionHora.unsubscribe();
   }
-
+  
   logout(): void {
     this.userServices.logout().subscribe(res=>{
       console.log("respuesta "+res)
@@ -93,11 +95,141 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   }
 
+  timeToNextHourInMs = (currentTimestampMs) => {
+    const timestampSeconds = currentTimestampMs / 1000;
+  
+    const numberOfSecondsIntoTheCurrentHour = timestampSeconds % 3600;
+  
+    const numberOfSecondsToTheNextHour = 3600 - numberOfSecondsIntoTheCurrentHour;
+  
+    return numberOfSecondsToTheNextHour * 1000;
+  };
+
+  nextHour(){
+    let actualTime = new Date();
+    this.timer = this.timeToNextHourInMs(actualTime);
+    console.log("NextHour: "+this.timer);
+    this.timer_b = true;
+    this.subscriptionHora = TimerObservable.create(0, this.timer)
+    .subscribe(()=>{
+      console.log("NextHour suscribe: "+this.timer);
+      this.houreRange();
+    });
+  }
+
+  houreRange(){
+    if (this.timer_b == true){
+      console.log("Hour range")
+      this.timer_b = false;
+      this.diasSesiones();
+    }else{
+      this.subscriptionHora.unsubscribe();
+      console.log("Else hour range")
+      this.subscriptionHora = TimerObservable.create(0, 3600000)
+    .subscribe(()=>{
+      console.log("NextHour suscribe: "+3600000);
+      this.diasSesiones();
+    });
+    }
+  }
+  diasSesiones() {
+    let hoy = new Date(); 
+    let hora: string;
+    let hora_inicio = new Date();
+    let fin: string;
+    let hora_fin = new (Date);
+    this.modal.getProfesorSesion()
+        .subscribe( (res) => {
+          const results: Horarios[] = res;
+          for(let i = 0; results.length > i; i++){            
+            if(this.diaCalendario() == results[i].dia){
+              
+              if(results[i].hora_inicio[1] == ":"){
+                hora = results[i].hora_inicio[0];
+                console.log("AM: "+hora);
+              }else{
+                hora = results[i].hora_inicio[0] + results[i].hora_inicio[1];
+                console.log("PM: "+hora);
+              }
+              if(results[i].hora_fin[1] == ":"){
+                fin = results[i].hora_fin[0];
+                console.log("AM: "+fin);
+              }else{
+                fin = results[i].hora_fin[0] + results[i].hora_fin[1];
+                console.log("PM: "+fin);
+              }
+              
+              hora_inicio.setHours(Number(hora), 0, 0)
+              hora_fin.setHours(Number(fin),0,0)
+              if(hora_fin < hoy){
+                console.log(hora_fin, hoy)
+                console.log("Clase " + results[i].clase_id+ " finalizada. Siguente clase")
+              }else{
+                console.log("Hora actual: " +hoy.getHours())
+                console.log(hora_inicio, hoy)
+                if(hora_inicio > hoy){
+                  this.alive = false;
+                  console.log("Hora inicia: "+hora_inicio);
+                }else if(hoy < hora_fin){
+                  this.consultar_inicio();
+                  this.alive = true;
+                }else{
+                  console.log("Finaliza la clase")
+                  this.alive = false;
+                  this.consultar_inicio();
+                }
+              }
+            }else{
+              //this.subscriptionHora.unsubscribe();
+            }
+          }
+        });
+    
+
+    }
+  
+  diaCalendario(){
+    let hoy = new Date();  
+    if (hoy.getDay() == 0){
+      return 'Domingo';
+    }else if(hoy.getDay() == 1){
+        return 'Lunes'
+    }else if(hoy.getDay() == 2){
+        return 'Martes'
+    }else if(hoy.getDay() == 3){
+      return 'Miercoles'
+    }
+    else if(hoy.getDay() == 4){
+      return 'Jueves'
+    }
+    else if(hoy.getDay() == 5){
+      return 'Viernes'
+    }
+    else if(hoy.getDay() == 6){
+      return 'Sabado'
+    }
+  }
+
+  consultar_inicio(){
+    if(this.alive ){
+      console.log("Clase iniciada"+this.alive)
+      this.subscription = TimerObservable.create(0, this.interval)
+    //.takeWhile(() => this.alive)
+    .subscribe(() =>{
+      this.update_data();
+    });
+    //}
+      
+    }else{
+      this.subscription.unsubscribe();
+    }
+  }
+
   claseActiva(content) : void {
     this.modalService.open(content, { centered: true, modalDialogClass: 'modal-body' });
   }
 
-  public update_data(){
+  public update_data(){  
     this.modal.getResultsPrediction().subscribe((res) => {
       this.estudiantes = []
       this.studentsOnline = 0;
@@ -116,6 +248,8 @@ export class NavBarComponent implements OnInit, OnDestroy {
       {
         console.log("if");
         btn.style.visibility ='hidden';
+        let hoy = new Date();
+
       }else{
         btn.style.visibility = 'visible';
         console.log("else");
