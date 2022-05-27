@@ -13,7 +13,7 @@ export class CoursesComponent implements OnInit {
               private userService: UserServiceService) { }
 
   courses: any = [];
-  username: string = ''; 
+  username: string = '';
   userId: string = '';
 
   fillTeacherCoursesArray(): void {
@@ -24,16 +24,17 @@ export class CoursesComponent implements OnInit {
         }, (error) => {
           this.router.navigate(["/courses"]);
         });
-  } 
+  }
 
   ngOnInit(): void {
     this.username = sessionStorage.getItem('user')
-    this.userId = sessionStorage.getItem('id'); 
+    this.userId = sessionStorage.getItem('id');
 
     this.fillTeacherCoursesArray();
   }
 
   redirectToCourseSessions(courseId: string, courseName: string) {
+    console.log("entra")
     sessionStorage.setItem('courseName', courseName);
     this.router.navigate([`/sessions/${courseId}`]);
   }

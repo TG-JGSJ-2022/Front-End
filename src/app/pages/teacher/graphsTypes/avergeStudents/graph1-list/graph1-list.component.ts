@@ -90,6 +90,7 @@ export class Graph1ListComponent implements OnInit {
           name: 'No Alerta',
           type: 'line',
           data: good_emotios,
+          smooth: true,
           animationDelay: (idx) => idx * 10,
           itemStyle: {
             color: 'rgb(35, 176, 0)'
@@ -99,6 +100,7 @@ export class Graph1ListComponent implements OnInit {
           name: 'Alerta',
           type: 'line',
           data: bad_emotions,
+          smooth: true,
           animationDelay: (idx) => idx * 10 + 100,
           itemStyle: {
 
