@@ -1,12 +1,13 @@
-.graph{
-  padding:10px;
- height:100%;
- width:100%;
-}
 .load{
   position:absolute;
   top:50%;
   left:50%;
   height:100%;
   width:100%;
+}
+.graph{
+  width:96%;
+  height:100%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 2%;
 }

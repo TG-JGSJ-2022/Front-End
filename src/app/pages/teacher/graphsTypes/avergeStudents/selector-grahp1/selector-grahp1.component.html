@@ -1,17 +1,9 @@
-<div class="selector">
-  <mat-form-field appearance="fill">
-    <mat-label>Tipo de grafica</mat-label>
-    <mat-select [(value)]="stiles">
-      <mat-option *ngFor="let tipo of listaTipos" [value]="tipo">
-        {{ tipo }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
+<mat-tab-group >
+  <mat-tab label="Emociones en tiempo">
+    <app-graph1 [sesionId]="this.sesionId"></app-graph1>
+  </mat-tab>
+  <mat-tab label="Porcentaje durante la clase">
+    <app-graph1-list [sesionId]="this.sesionId"></app-graph1-list>
+  </mat-tab>
+</mat-tab-group>
 
-<div *ngIf="stiles == 'Barra'">
-  <app-graph1 [sesionId]="this.sesionId"></app-graph1>
-</div>
-<div *ngIf="stiles == 'Lista'">
-  <app-graph1-list [sesionId]="this.sesionId"></app-graph1-list>
-</div>

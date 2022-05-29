@@ -13,13 +13,13 @@ import { UserServiceService } from 'src/app/services/user/user-service.service';
 
 export class EmotionStudentComponent {
   @Input()
-  public sesionId:number;
+  public sesionId: number;
   public student: string;
   public listStudents: any;
   public response: any;
   public options: any;
   public options2: any;
-  public dataSource:any = [];
+  public dataSource: any = [];
 
 
   displayedColumns: string[] = ['nombre', 'fecha', 'emocion'];
@@ -39,7 +39,7 @@ export class EmotionStudentComponent {
   public table(student) {
     this.student = student;
     this.dataSource = []
-    this.dataSource.push(["emocion","fecha"])
+    this.dataSource.push(["emocion", "fecha"])
     this.response["data"].forEach(data => {
       if (data["nombre"] == this.student) {
         this.dataSource.push([
@@ -52,10 +52,10 @@ export class EmotionStudentComponent {
     this.setDataTime();
     this.setDataPie();
   }
-  public setDataPie(){
-    var colors ={
-      "feliz": "rgba(35, 176, 0 ,1)",
-      "triste": 'rgba(255, 0, 0,1)',
+  public setDataPie() {
+    var colors = {
+      "feliz": "rgba(221, 121, 255 ,1)",
+      "triste": 'rgba(255, 110, 118,1)',
       "confundido": 'rgba(81, 2, 218 ,1)',
       "aburrido": 'rgba(2, 146, 218,1)',
       "frustrado": "#CDDA02",
@@ -71,39 +71,74 @@ export class EmotionStudentComponent {
     };
     console.log("------")
     console.log(this.dataSource);
-    this.dataSource.forEach(data =>{
-      if (data[0] != "emocion"){
-        pie[data[0]] =   pie[data[0]]  + 1;
+    this.dataSource.forEach(data => {
+      if (data[0] != "emocion") {
+        pie[data[0]] = pie[data[0]] + 1;
       }
 
     })
+
     console.log(pie);
     this.options2 = {
       title: {
-        text: this.student,
-        subtext: 'Informacion del procentaje en todo el tiempo de la clase',
-        left: 'right'
+        text: this.student[0].toUpperCase()+this.student.slice(1),
+        subtext: 'Informacion del procentaje\nen todo el tiempo de la clase',
+        left: 'left'
       },
       tooltip: {
         trigger: 'item'
       },
       legend: {
         orient: 'vertical',
-        left: 'left'
+        right: '0%',
+        bottom: "0%"
       },
       series: [
         {
+          label: {
+            formatter: '{a|{a}}{abg|}\n{hr|}\n  {b|{b}：}{c}  {per|{d}%}  ',
+            backgroundColor: '#F6F8FC',
+            borderColor: '#8C8D8E',
+            borderWidth: 1,
+            borderRadius: 4,
+            rich: {
+              a: {
+                color: '#6E7079',
+                lineHeight: 22,
+                align: 'center'
+              },
+              hr: {
+                borderColor: '#8C8D8E',
+                width: '100%',
+                borderWidth: 1,
+                height: 0
+              },
+              b: {
+                color: '#4C5058',
+                fontSize: 14,
+                fontWeight: 'bold',
+                lineHeight: 33
+              },
+              per: {
+                color: '#fff',
+                backgroundColor: '#4C5058',
+                padding: [3, 4],
+                borderRadius: 4
+              }
+            }
+          },
+          name:"Emoción",
           type: 'pie',
           radius: '70%',
           data: [
-            { value: (pie["feliz"]/this.dataSource.length)*100, name: 'feliz' },
-            { value: (pie["triste"]/this.dataSource.length)*100, name: 'triste' },
-            { value: (pie["confundido"]/this.dataSource.length)*100, name: 'confundido' },
-            { value: (pie["aburrido"]/this.dataSource.length)*100, name: 'aburrido' },
-            { value: (pie["frustrado"]/this.dataSource.length)*100, name: 'frustrado' },
-            { value: (pie["estresado"]/this.dataSource.length*100), name: 'estresado' }
+            { value: (pie["feliz"]), name: 'feliz' },
+            { value: (pie["triste"]), name: 'triste' },
+            { value: (pie["confundido"]), name: 'confundido' },
+            { value: (pie["aburrido"]), name: 'aburrido' },
+            { value: (pie["frustrado"]), name: 'frustrado' },
+            { value: (pie["estresado"]), name: 'estresado' }
           ],
-          emphasis:{
+          emphasis: {
             itemStyle: {
 
 
@@ -112,33 +147,33 @@ export class EmotionStudentComponent {
               shadowColor: 'rgba(0, 0, 0, 0.5)'
             }
           },
-          itemStyle:{
-            color: function(param){
+          itemStyle: {
+            color: function (param) {
               console.log(param["name"])
-                return colors[param["name"]]
-              },
+              return colors[param["name"]]
+            },
           }
         }
       ]
     };
   }
-  public setDataTime(){
-    var colors ={
-      "feliz": "#CD00FF",
-      "triste": "#001BFF",
-      "confundido": "#5102DA",
-      "aburrido": "#6D6D6D",
+  public setDataTime() {
+    var colors = {
+      "feliz": "rgba(221, 121, 255 ,1)",
+      "triste": 'rgba(255, 110, 118,1)',
+      "confundido": 'rgba(81, 2, 218 ,1)',
+      "aburrido": 'rgba(2, 146, 218,1)',
       "frustrado": "#CDDA02",
       "estresado": "#4D4D4D"
     }
     const xAxisDataTime = this.response["dates"];
     this.options = {
-      title:{
-        show:true,
-        text:this.student,
-        left:"right",
-        top:0,
-        subtext :"Emociones durante el transcurso del tiempo"
+      title: {
+        show: true,
+        text: this.student[0].toUpperCase()+this.student.slice(1),
+        left: "center",
+        top: 0,
+        subtext: "Emociones durante el transcurso del tiempo"
       },
       dataset: {
         source: this.dataSource
@@ -148,40 +183,34 @@ export class EmotionStudentComponent {
       },
       tooltip: {},
       xAxis: {
-        data:xAxisDataTime,
-        name:"Hora",
-        splitNumber:6
+        data: xAxisDataTime,
+        name: "Hora",
+        splitNumber: 6
       },
       yAxis: {
-        data :[
-        "triste",
-        "confundido",
-        "aburrido",
-        "frustrado",
-        "estresado","feliz"],
-        type:"category",
-        name:"Emocion",
+        data: [
+          "triste",
+          "confundido",
+          "aburrido",
+          "frustrado",
+          "estresado", "feliz"],
+        type: "category",
+        name: "Emocion",
         splitArea: {
-          // areaStyle: {
-          //   color : ['rgba(255, 0, 0,0.1)','rgba(81, 2, 218 ,0.1)','rgba(2, 146, 218,0.1)',
-          //   'rgba(205, 218, 2,0.1)','rgba(77, 77, 77 ,0.1)','rgba(35, 176, 0 ,0.1)'],
-          //   shadowBlur: 0.5,
-          //   shadowColor:"rgba(66, 214, 21, 1)"
-          // },
           show: true
         },
-        fontWeight : 'bold',
+        fontWeight: 'bold',
       },
       dataZoom: [
         {
           type: 'inside',
-          start:20,
-          end:70
+          start: 0,
+          end: 50
         },
         {
-          show:true,
-          type:"slider",
-          moveHandleIcon:"pin"
+          show: true,
+          type: "slider",
+          moveHandleIcon: "pin"
         }
       ],
 
@@ -189,25 +218,25 @@ export class EmotionStudentComponent {
         {
           type: 'scatter',
           smooth: true,
-          symbolSize:15,
-          itemStyle:{
+          symbolSize: 15,
+          itemStyle: {
 
-            color: function(param){
+            color: function (param) {
 
               return colors[(param.value)[0]]
             },
-            symbol:"diamond"
+            symbol: "diamond"
           },
-          encode:{
-            x:"fecha",
-            y:"emocion"
+          encode: {
+            x: "fecha",
+            y: "emocion"
           },
           animationDelay: (idx) => idx * 10,
         }
       ],
       // animationEasing: 'elasticOut',
       animationDelayUpdate: (idx) => idx * 5,
-      darkMode:true
+      darkMode: true
     };
 
   }

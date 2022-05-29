@@ -1,26 +1,34 @@
-
 <div class="content">
-
-    <mat-list class="list">
-      <!-- <cdk-virtual-scroll-viewport itemSize="100" class="example-viewport"> -->
-      <div *ngFor="let student of listStudents">
-        <mat-list-item class="item" (click)="table(student)">{{
-          student
+  <mat-list class="list">
+    <!-- <cdk-virtual-scroll-viewport itemSize="100" class="example-viewport"> -->
+    <div *ngFor="let student of listStudents">
+      <mat-list-item class="item" (click)="table(student)">{{
+        student
         }}</mat-list-item>
-        <mat-divider></mat-divider>
-      </div>
+      <mat-divider></mat-divider>
+    </div>
     <!-- </cdk-virtual-scroll-viewport> -->
-    </mat-list>
+  </mat-list>
 
-    <mat-tab-group class="graphs">
-      <mat-tab label="Emociones en tiempo">
-        <mat-icon>info</mat-icon>
-        <div class="graph" echarts [options]="options"></div>
-      </mat-tab>
-      <mat-tab label="Porcentaje duarnte la clase">
-        <mat-icon>info</mat-icon>
-        <div class="graph" echarts [options]="options2"></div>
-      </mat-tab>
-    </mat-tab-group>
-
+  <mat-tab-group class="graphs">
+    <mat-tab label="Emociones en tiempo">
+      <ng-template #tolTemplate>Alerta! </ng-template>
+      <mat-icon title="" class="info" [tooltip]="tolTemplate" placement="left">info</mat-icon>
+      <div class="graph" echarts [options]="options">
+        <div class = "mensaje">
+            Selecionar un estudiante de la columna izquierda
+            para conocer su comportamiento durante la sesión
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Porcentaje durante la clase">
+      <mat-icon class="info">info</mat-icon>
+      <div class="graph" echarts [options]="options2">
+        <div class = "mensaje">
+          Selecionar un estudiante de la columna izquierda
+          para conocer su comportamiento durante la sesión
+      </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
 </div>
