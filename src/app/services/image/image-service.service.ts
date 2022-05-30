@@ -13,11 +13,6 @@ export class ImageServiceService {
 
   postImagePrediction(base64Image: string): Observable<ResponseInterface> {
     let date:Date =  new Date(Date.now());
-    console.log(date);
-    console.log(date.toUTCString());
-    console.log(date.toLocaleDateString());
-    console.log(date.toJSON());
-    console.log(date.toLocaleString());
     let fecha:String = date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear() 
       + ", " + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()
     console.log("DATE: ", fecha); 

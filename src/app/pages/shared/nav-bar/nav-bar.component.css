@@ -12,6 +12,7 @@
 }
 #modalButton{
     visibility: hidden;
+    display: block;
 }
 .titulo {
     display: flex;

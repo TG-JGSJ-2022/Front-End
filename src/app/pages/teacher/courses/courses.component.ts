@@ -8,9 +8,9 @@ import { UserServiceService } from 'src/app/services/user/user-service.service';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit {
-
+  public name = this.getData();
   constructor(private router: Router,
-              private userService: UserServiceService) { }
+    private userService: UserServiceService) { }
 
   courses: any = [];
   username: string = '';
@@ -18,12 +18,21 @@ export class CoursesComponent implements OnInit {
 
   fillTeacherCoursesArray(): void {
     this.userService.getTeacherCourses(this.username, this.userId)
+<<<<<<< HEAD
         .subscribe( (data) => {
           this.courses = data
           console.log(this.courses)
         }, (error) => {
           this.router.navigate(["/courses"]);
         });
+=======
+      .subscribe((data) => {
+        this.courses = data
+        console.log(this.courses)
+      }, (error) => {
+        this.router.navigate(["/courses"]);
+      });
+>>>>>>> develop
   }
 
   ngOnInit(): void {
@@ -37,6 +46,10 @@ export class CoursesComponent implements OnInit {
     console.log("entra")
     sessionStorage.setItem('courseName', courseName);
     this.router.navigate([`/sessions/${courseId}`]);
+  }
+
+  public getData() {
+    return sessionStorage.getItem('user');
   }
 
 }
