@@ -1,40 +1,52 @@
-.backgroud{
-  background-color:rgb(218, 215, 215);
-  position:fixed;
+.backgroud {
+  background-color: rgb(218, 215, 215);
+  position: fixed;
 
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
 
   width: 100%;
   height: 100%;
 }
 
-.conteiner{
-  background-color:rgb(255, 255, 255);
+.conteiner {
+  background-color: rgb(255, 255, 255);
   margin-top: 3%;
   /* margin-bottom: 3%; */
   margin-left: 3%;
   margin-right: 3%;
   border-radius: 10px;
   height: 75%;
-
 }
-.mat_tab_group{
+.mat_tab_group {
   height: 100%;
- width: 100%;
+  width: 100%;
 }
 :host ::ng-deep .mat-tab-body-wrapper {
   height: 100%;
 }
-.graph{
- height: 100%;
- width: 100%;
+.graph {
+  height: 100%;
+  width: 100%;
 }
-.graphs{
+.graphs {
   height: 100%;
   width: 100%;
 }
 
 .mat-tab-body-wrapper {
   height: 100%;
+}
+.back {
+  position: absolute;
+  z-index: 100;
+  margin: 1%;
+  margin-top: 3%;
+  cursor: pointer;
+  background-color: white;
+  border-radius: 50%;
+}
+.back:hover {
+  color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.256);
 }

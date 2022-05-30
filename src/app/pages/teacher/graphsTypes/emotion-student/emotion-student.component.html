@@ -12,7 +12,12 @@
 
   <mat-tab-group class="graphs">
     <mat-tab label="Emociones en tiempo">
-      <ng-template #tolTemplate>Alerta! </ng-template>
+      <ng-template #tolTemplate>
+        <p>
+          Dentro de la grafica se encuentra toda la información
+          de las emociones de un estudiante al transcurso del tiempo.
+        </p>
+      </ng-template>
       <mat-icon title="" class="info" [tooltip]="tolTemplate" placement="left">info</mat-icon>
       <div class="graph" echarts [options]="options">
         <div class = "mensaje">
@@ -22,7 +27,14 @@
       </div>
     </mat-tab>
     <mat-tab label="Porcentaje durante la clase">
-      <mat-icon class="info">info</mat-icon>
+      <ng-template #tolTemplate2>
+        <p>
+          Dentro de la grafica se encuentra toda la información
+          de las emociones de porcentaje del estudiante en toda
+          la clase.
+        </p>
+      </ng-template>
+      <mat-icon title="" class="info" [tooltip]="tolTemplate2" placement="left">info</mat-icon>
       <div class="graph" echarts [options]="options2">
         <div class = "mensaje">
           Selecionar un estudiante de la columna izquierda

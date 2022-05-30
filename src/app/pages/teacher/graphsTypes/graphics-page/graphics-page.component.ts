@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NavBarComponent } from 'src/app/pages/shared/nav-bar/nav-bar.component';
-
+import { Location } from '@angular/common';
 @Component({
   selector: 'app-graphics-page',
   templateUrl: './graphics-page.component.html',
@@ -13,7 +12,8 @@ export class GraphicsPageComponent implements OnInit {
 
   constructor(
     private readonly route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private location:Location
   ) { }
 
   ngOnInit(): void {
@@ -27,5 +27,9 @@ export class GraphicsPageComponent implements OnInit {
   }
 
   change(){}
+  last(){
+    console.log("entraaaa");
+    this.location.back();
+  }
 
 }

@@ -57,7 +57,7 @@ table {
 .info{
   /* position: absolute; */
   z-index:100;
-  margin:2%;
+  margin:0%;
   float:right;
 }
 .graph::-webkit-scrollbar {

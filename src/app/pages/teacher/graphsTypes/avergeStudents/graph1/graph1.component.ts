@@ -78,10 +78,26 @@ export class Graph1Component implements OnInit {
     });
 
     this.options = {
-      legend: {
-        data: ['No Alerta', 'Alerta'],
-        align: 'left',
+      title: {
+        show: true,
+        text: "Porcentaje de emociones en relación con el tiempo",
+        left: "left",
+        top: 0
       },
+      legend: {
+        data: [
+          "feliz",
+          "triste",
+          "confundido",
+          "aburrido",
+          "frustrado",
+          "estresado",
+        ],
+        right: '0%',
+        bottom: "0%",
+        orient:"vertical"
+      },
+
       tooltip: {},
       xAxis: {
         data: xAxisDataTime,

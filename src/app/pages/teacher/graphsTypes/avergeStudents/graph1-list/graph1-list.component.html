@@ -1,5 +1,6 @@
 <div *ngIf="this.data !== undefined; else loading">
-  <div echarts  class= "graph"[options]="options"></div>
+
+  <div echarts class="graph" [options]="options"></div>
 </div>
 
 <ng-template #loading>
