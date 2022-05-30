@@ -32,7 +32,10 @@ import { StudensConectedComponent } from './pages/teacher/graphsTypes/studens-co
 import { EmotionStudentComponent } from './pages/teacher/graphsTypes/emotion-student/emotion-student.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
-
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
+import {ScrollingModule} from '@angular/cdk/scrolling';
+import {MatIconModule} from '@angular/material/icon';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +70,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatProgressSpinnerModule,
     MatTabsModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatDividerModule,
+    MatListModule,
+    ScrollingModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

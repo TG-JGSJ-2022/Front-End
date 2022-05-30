@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { color } from 'echarts';
 import { UserServiceService } from '../../../../../services/user/user-service.service';
 
 
@@ -10,7 +11,7 @@ import { UserServiceService } from '../../../../../services/user/user-service.se
 })
 export class Graph1Component implements OnInit {
   @Input()
-  public sesionId:number;
+  public sesionId: number;
   public options: any;
   public const: any = {
     "feliz": "positivo",
@@ -28,8 +29,8 @@ export class Graph1Component implements OnInit {
     this.userService.getDataSesion(this.sesionId).subscribe(response => {
 
       this.data = response;
+      console.log(response)
       this.graph()
-      // this.example()
     }, (error) => {
       this.data = {
       }
@@ -37,36 +38,66 @@ export class Graph1Component implements OnInit {
 
   }
 
-  graph(){
+  graph() {
 
-    const xAxisDataTime = this.data["dates"];
-    const good_emotios = [];
-    const bad_emotions = [];
-
-
-    this.data["dates"].forEach(date => {
-      let good = 0;
-      let bad = 0;
-      let students = 0;
+    var xAxisDataTime = this.data["dates"];
+    var line = {
+      "feliz": [],
+      "triste": [],
+      "confundido": [],
+      "aburrido": [],
+      "frustrado": [],
+      "estresado": []
+    };
+    xAxisDataTime.forEach(date => {
+      var emociones = {
+        "feliz": 0,
+        "triste": 0,
+        "confundido": 0,
+        "aburrido": 0,
+        "frustrado": 0,
+        "estresado": 0
+      };
+      var x = [];
       this.data["data"].forEach(d => {
+
         if (d["fecha"] == date) {
-          if (this.const[d["emocion"]] == "positivo") {
-            good++;
-          }else{
-            bad++;
-          }
-          students++;
+          emociones[d["emocion"]] = emociones[d["emocion"]] + 1
+          x.push(d)
         }
       })
-      good_emotios.push((good/students)*100);
-      bad_emotions.push((bad/students)*100);
+      console.log(x)
+      line["feliz"].push(emociones["feliz"]);
+      line["triste"].push(emociones["triste"]);
+      line["confundido"].push(emociones["confundido"]);
+      line["aburrido"].push(emociones["aburrido"]);
+      line["frustrado"].push(emociones["frustrado"]);
+      line["estresado"].push(emociones["estresado"]);
+
+
     });
 
     this.options = {
-      legend: {
-        data: ['No Alerta', 'Alerta'],
-        align: 'left',
+      title: {
+        show: true,
+        text: "Porcentaje de emociones en relación con el tiempo",
+        left: "left",
+        top: 0
       },
+      legend: {
+        data: [
+          "feliz",
+          "triste",
+          "confundido",
+          "aburrido",
+          "frustrado",
+          "estresado",
+        ],
+        right: '0%',
+        bottom: "0%",
+        orient:"vertical"
+      },
+
       tooltip: {},
       xAxis: {
         data: xAxisDataTime,
@@ -84,29 +115,60 @@ export class Graph1Component implements OnInit {
       dataZoom: [
         {
           type: 'inside',
+          start: 0,
+          end: 15
         },
+        {
+          show: true,
+          type: "slider",
+          moveHandleIcon: "pin"
+        }
       ],
       series: [
         {
-          name: 'No Alerta',
-          type: 'bar',
-          data: good_emotios,
-          animationDelay: (idx) => idx * 10,
-          itemStyle: {
-            color: 'rgb(35, 176, 0)'
-          }
+          name: "feliz",
+          type: "line",
+          smooth: true,
+          data: line["feliz"],
+          color:"rgba(221, 121, 255 ,1)"
         },
         {
-          name: 'Alerta',
-          type: 'bar',
-          data: bad_emotions,
-          animationDelay: (idx) => idx * 10 + 100,
-          itemStyle: {
-
-            color: 'rgb(252, 0, 0 )'
-          }
+          name: "triste",
+          type: "line",
+          smooth: true,
+          data: line["triste"],
+          color:'rgba(255, 110, 118,1)'
         },
+        {
+          name: "confundido",
+          type: "line",
+          smooth: true,
+          data: line["confundido"],
+          color:'rgba(81, 2, 218 ,1)'
+        },
+        {
+          name: "aburrido",
+          type: "line",
+          smooth: true,
+          data: line["aburrido"],
+          color:'rgba(2, 146, 218,1)'
+        },
+        {
+          name: "frustrado",
+          type: "line",
+          smooth: true,
+          data: line["frustrado"],
+          color: "#CDDA02"
+        },
+        {
+          name: "estresado",
+          type: "line",
+          smooth: true,
+          data: line["estresado"],
+          color:  "#4D4D4D"
+        }
       ],
+
       animationEasing: 'elasticOut',
       animationDelayUpdate: (idx) => idx * 5,
     };

@@ -1,17 +1,38 @@
-<div class="selector">
-  <mat-form-field appearance="fill">
-    <mat-label>Tipo de grafica</mat-label>
-    <mat-select [(value)]="stiles">
-      <mat-option *ngFor="let tipo of listaTipos" [value]="tipo">
-        {{ tipo }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-</div>
-
-<div *ngIf="stiles == 'Barra'">
-  <app-graph1 [sesionId]="this.sesionId"></app-graph1>
-</div>
-<div *ngIf="stiles == 'Lista'">
-  <app-graph1-list [sesionId]="this.sesionId"></app-graph1-list>
-</div>
+<mat-tab-group>
+  <mat-tab label="Emociones en tiempo">
+    <ng-template #tolTemplate>
+    <p>
+      Dentro de la grafica se encuentra toda la información
+      relacionada con el total de las emociones dadas en toda la
+      sesión en relación con el tiempo.
+    </p>
+    <p>
+      Se pueden filtrar las emociones haciendo click sobre el
+      nombre de ellas en la parte infrerior derecha
+    </p>
+    </ng-template>
+    <mat-icon title="" class="info" [tooltip]="tolTemplate" placement="left"
+      >info</mat-icon
+    >
+    <app-graph1 [sesionId]="this.sesionId"></app-graph1>
+  </mat-tab>
+  <mat-tab label="Porcentaje durante la clase">
+    <ng-template #tolTemplate2>
+      <p>
+        Dentro de la grafica se encuentra toda la información
+        relacionada con el total de porcentaje de las emociones
+        dadas en toda la sesión.
+        Tambien se puede ver la relacion de las emociones de
+        alerta y no alerta
+      </p>
+      <p>
+        Se pueden filtrar las emociones haciendo click sobre el
+        nombre de ellas en la parte infrerior derecha
+      </p>
+    </ng-template>
+    <mat-icon title="" class="info" [tooltip]="tolTemplate2" placement="left"
+      >info</mat-icon
+    >
+    <app-graph1-list [sesionId]="this.sesionId"></app-graph1-list>
+  </mat-tab>
+</mat-tab-group>

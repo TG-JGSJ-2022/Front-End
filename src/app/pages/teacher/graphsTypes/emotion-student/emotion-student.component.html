@@ -1,37 +1,46 @@
-<div class="selector">
-  <mat-form-field appearance="fill">
-    <mat-label>Estudiante</mat-label>
-    <mat-select [(value)]="student" (click)="table()">
-      <mat-option *ngFor="let student of listStudents" [value]="student">
-        {{ student }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+<div class="content">
+  <mat-list class="list">
+    <!-- <cdk-virtual-scroll-viewport itemSize="100" class="example-viewport"> -->
+    <div *ngFor="let student of listStudents">
+      <mat-list-item class="item" (click)="table(student)">{{
+        student
+        }}</mat-list-item>
+      <mat-divider></mat-divider>
+    </div>
+    <!-- </cdk-virtual-scroll-viewport> -->
+  </mat-list>
+
+  <mat-tab-group class="graphs">
+    <mat-tab label="Emociones en tiempo">
+      <ng-template #tolTemplate>
+        <p>
+          Dentro de la grafica se encuentra toda la información
+          de las emociones de un estudiante al transcurso del tiempo.
+        </p>
+      </ng-template>
+      <mat-icon title="" class="info" [tooltip]="tolTemplate" placement="left">info</mat-icon>
+      <div class="graph" echarts [options]="options">
+        <div class = "mensaje">
+            Selecionar un estudiante de la columna izquierda
+            para conocer su comportamiento durante la sesión
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Porcentaje durante la clase">
+      <ng-template #tolTemplate2>
+        <p>
+          Dentro de la grafica se encuentra toda la información
+          de las emociones de porcentaje del estudiante en toda
+          la clase.
+        </p>
+      </ng-template>
+      <mat-icon title="" class="info" [tooltip]="tolTemplate2" placement="left">info</mat-icon>
+      <div class="graph" echarts [options]="options2">
+        <div class = "mensaje">
+          Selecionar un estudiante de la columna izquierda
+          para conocer su comportamiento durante la sesión
+      </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
 </div>
-<div class ="list">
-  <table mat-table [dataSource]="dataSource" >
-    <ng-container matColumnDef="nombre">
-      <th mat-header-cell *matHeaderCellDef> Nombre </th>
-      <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="fecha">
-      <th mat-header-cell *matHeaderCellDef> Fecha </th>
-      <td mat-cell *matCellDef="let element"> {{element.fecha}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="emocion">
-      <th mat-header-cell *matHeaderCellDef> Emocion</th>
-      <td mat-cell *matCellDef="let element"> {{element.emocion}} </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-  <mat-paginator [pageSizeOptions]="[5,10,20,30]"
-                 showFirstLastButtons
-                 aria-label="Select page of periodic elements">
-  </mat-paginator>
-</div>
-
-

@@ -1,20 +1,20 @@
 <div class="backgroud">
   <app-nav-bar></app-nav-bar>
-
+  <mat-icon (click)="last()" class="back" >arrow_back</mat-icon>
   <div class="conteiner">
-    <mat-tab-group>
-      <mat-tab label="Resultados globales" class="graph">
-        <div class="graph">
+    <mat-tab-group class = "mat_tab_group" >
+      <mat-tab label="Resultados globales" class="graph" style="height: 100%;">
+        <div class="graph" style="height: 100%;">
           <app-selector-grahp1 [sesionId] = "this.sesionId"></app-selector-grahp1>
         </div>
       </mat-tab>
-      <mat-tab label="Estudiantes conectados" class="graph">
-        <div class="graph">
+      <!-- <mat-tab label="Estudiantes conectados" class="graph" style="height: 100%;">
+        <div class="graph" style="height: 100%;">
           <app-studens-conected [sesionId] = "this.sesionId"></app-studens-conected>
         </div>
-      </mat-tab>
-      <mat-tab label="Información por estudiante" class="graph">
-        <div class="graph">
+      </mat-tab> -->
+      <mat-tab label="Información por estudiante" class="graph" style="height: 100%;">
+        <div class="graph" style="height: 100%;">
           <app-emotion-student [sesionId] = "this.sesionId"></app-emotion-student>
         </div>
       </mat-tab>

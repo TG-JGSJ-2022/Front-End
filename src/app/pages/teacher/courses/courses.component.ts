@@ -34,6 +34,7 @@ export class CoursesComponent implements OnInit {
   }
 
   redirectToCourseSessions(courseId: string, courseName: string) {
+    console.log("entra")
     sessionStorage.setItem('courseName', courseName);
     this.router.navigate([`/sessions/${courseId}`]);
   }

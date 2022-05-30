@@ -28,7 +28,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
       this.interval = 10000;
     }
   timer : any;
-  username: string = ''; 
+  username: string = '';
   userId: string = '';
   horarios: Horarios[];
   hoy_dia: string;
@@ -82,7 +82,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
     //this.subscription.unsubscribe();
     //this.subscriptionHora.unsubscribe();
   }
-  
+
   logout(): void {
     this.userServices.logout().subscribe(res=>{
       console.log("respuesta "+res)
@@ -97,11 +97,11 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   timeToNextHourInMs = (currentTimestampMs) => {
     const timestampSeconds = currentTimestampMs / 1000;
-  
+
     const numberOfSecondsIntoTheCurrentHour = timestampSeconds % 3600;
-  
+
     const numberOfSecondsToTheNextHour = 3600 - numberOfSecondsIntoTheCurrentHour;
-  
+
     return numberOfSecondsToTheNextHour * 1000;
   };
 
@@ -133,7 +133,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
     }
   }
   diasSesiones() {
-    let hoy = new Date(); 
+    let hoy = new Date();
     let hora: string;
     let hora_inicio = new Date();
     let fin: string;
@@ -141,9 +141,9 @@ export class NavBarComponent implements OnInit, OnDestroy {
     this.modal.getProfesorSesion()
         .subscribe( (res) => {
           const results: Horarios[] = res;
-          for(let i = 0; results.length > i; i++){            
+          for(let i = 0; results.length > i; i++){
             if(this.diaCalendario() == results[i].dia){
-              
+
               if(results[i].hora_inicio[1] == ":"){
                 hora = results[i].hora_inicio[0];
                 console.log("AM: "+hora);
@@ -158,7 +158,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
                 fin = results[i].hora_fin[0] + results[i].hora_fin[1];
                 console.log("PM: "+fin);
               }
-              
+
               hora_inicio.setHours(Number(hora), 0, 0)
               hora_fin.setHours(Number(fin),0,0)
               if(hora_fin < hoy){
@@ -188,12 +188,12 @@ export class NavBarComponent implements OnInit, OnDestroy {
             }
           }
         });
-    
+
 
     }
-  
+
   diaCalendario(){
-    let hoy = new Date();  
+    let hoy = new Date();
     if (hoy.getDay() == 0){
       return 'Domingo';
     }else if(hoy.getDay() == 1){
@@ -223,7 +223,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
       this.update_data();
     });
     //}
-      
+
     }else{
       this.subscription.unsubscribe();
     }
@@ -236,7 +236,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
     }
   }
 
-  public update_data(){  
+  public update_data(){
     this.modal.getResultsPrediction().subscribe((res) => {
       this.estudiantes = []
       this.studentsOnline = 0;
@@ -258,10 +258,10 @@ export class NavBarComponent implements OnInit, OnDestroy {
       }else{
         btn.style.visibility = 'visible';
         console.log("else");
-        
+
         //Debe ser desde la tabla sesion
-        let date = new Date(results[0].fecha); 
-        
+        let date = new Date(results[0].fecha);
+
         const day = date.toLocaleString('default', {day: '2-digit'});
         const month = date.toLocaleString('default', {month: 'long'});
         this.sesion_date = day + ' de ' + month ;
@@ -340,6 +340,6 @@ export class NavBarComponent implements OnInit, OnDestroy {
     this.modal.postEndSesion()
       .subscribe((res) =>{
     });
-    
+
   }
 }

@@ -12,3 +12,63 @@ table {
   padding-top: 10px;
   padding-left:10px;
 }
+.list{
+  scroll-behavior: auto;
+  padding-left: 0;
+  padding-right: 0;
+  width:15%;
+  height: 100%;
+  overflow-y: scroll;
+  box-shadow: 0;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)
+}
+.list::-webkit-scrollbar {
+  width: 8px;     /* Tamaño del scroll en vertical */
+  height: 8px;    /* Tamaño del scroll en horizontal */
+  display: none;  /* Ocultar scroll */
+}
+/* Ponemos un color de fondo y redondeamos las esquinas del thumb */
+
+.content{
+  display: flex;
+  height: 100%;
+}
+.graph{
+
+  width:96%;
+  height:90%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 2%;
+}
+.item{
+  cursor: pointer;
+}
+.item:hover{
+  background-color: rgba(0, 0, 0, 0.256);
+}
+.vistas{
+  height: 100%;
+}
+.graphs{
+  height: 100%;
+  width: 100%;
+
+}
+.info{
+  /* position: absolute; */
+  z-index:100;
+  margin:0%;
+  float:right;
+}
+.graph::-webkit-scrollbar {
+  width: 8px;     /* Tamaño del scroll en vertical */
+  height: 8px;    /* Tamaño del scroll en horizontal */
+  display: none;  /* Ocultar scroll */
+}
+.mensaje{
+   height: 100%;
+   width: 100%;
+   text-align: center;
+   padding-top: 17.25%;
+  /* vertical-align: middle; */
+}
