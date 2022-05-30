@@ -162,18 +162,22 @@ export class NavBarComponent implements OnInit, OnDestroy {
               hora_inicio.setHours(Number(hora), 0, 0)
               hora_fin.setHours(Number(fin),0,0)
               if(hora_fin < hoy){
+                this.activeClass = false;
                 console.log(hora_fin, hoy)
                 console.log("Clase " + results[i].clase_id+ " finalizada. Siguente clase")
               }else{
                 console.log("Hora actual: " +hoy.getHours())
                 console.log(hora_inicio, hoy)
                 if(hora_inicio > hoy){
+                  this.activeClass = false;
                   this.alive = false;
                   console.log("Hora inicia: "+hora_inicio);
                 }else if(hoy < hora_fin){
+                  this.activeClass = true;
                   this.consultar_inicio();
                   this.alive = true;
                 }else{
+                  this.activeClass = false;
                   console.log("Finaliza la clase")
                   this.alive = false;
                   this.consultar_inicio();
@@ -226,7 +230,10 @@ export class NavBarComponent implements OnInit, OnDestroy {
   }
 
   claseActiva(content) : void {
-    this.modalService.open(content, { centered: true, modalDialogClass: 'modal-body' });
+    if(this.activeClass == true){
+      console.log(this.activeClass)
+      this.modalService.open(content, { centered: true, modalDialogClass: 'modal-body' });
+    }
   }
 
   public update_data(){  
@@ -328,11 +335,11 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   }
   public end_sesion(){
-    console.log("si funciona")
+    this.activeClass = false;
+    this.subscription.unsubscribe()
     this.modal.postEndSesion()
       .subscribe((res) =>{
-
     });
-    this.subscription.unsubscribe()
+    
   }
 }
