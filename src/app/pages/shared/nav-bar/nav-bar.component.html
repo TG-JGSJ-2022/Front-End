@@ -36,7 +36,9 @@
         <p class="Logo">SRE</p>
         </div>
         <ul>
-            <li *ngIf="activeClass" (click)="claseActiva(content)"><button id="modalButton">Clase Activa</button></li>
+            <li *ngIf="activeClass" (click)="claseActiva(content)">
+                <button id="modalButton">Clase Activa</button>
+            </li>
             <button class="logout" (click)="logout()">Cerrar sesión</button>
         </ul>
     </nav>
