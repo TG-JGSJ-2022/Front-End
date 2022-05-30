@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserServiceService } from 'src/app/services/user/user-service.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-sessions',
@@ -16,8 +17,9 @@ export class SessionsComponent implements OnInit {
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly router: Router, 
+    private readonly router: Router,
     private readonly userService: UserServiceService,
+    private location:Location
   ) { }
 
   // TODO : Sort sessions in asending order based on date
@@ -40,5 +42,8 @@ export class SessionsComponent implements OnInit {
   redirectToSession(index: number) {
     this.router.navigate([`/sesion/${this.sessions[index].id}`]);
   }
-
+  last(){
+    console.log("entraaaa");
+    this.location.back();
+  }
 }

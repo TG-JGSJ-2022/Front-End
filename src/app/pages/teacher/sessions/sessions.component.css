@@ -65,3 +65,16 @@
   height: 75%;
   overflow-y: auto;
 }
+.back {
+  position: absolute;
+  z-index: 100;
+  margin: 1%;
+  margin-top: 3%;
+  cursor: pointer;
+  background-color: white;
+  border-radius: 50%;
+}
+.back:hover {
+  color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.256);
+}
