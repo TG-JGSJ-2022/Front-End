@@ -18,21 +18,12 @@ export class CoursesComponent implements OnInit {
 
   fillTeacherCoursesArray(): void {
     this.userService.getTeacherCourses(this.username, this.userId)
-<<<<<<< HEAD
-        .subscribe( (data) => {
-          this.courses = data
-          console.log(this.courses)
-        }, (error) => {
-          this.router.navigate(["/courses"]);
-        });
-=======
       .subscribe((data) => {
         this.courses = data
         console.log(this.courses)
       }, (error) => {
         this.router.navigate(["/courses"]);
       });
->>>>>>> develop
   }
 
   ngOnInit(): void {
