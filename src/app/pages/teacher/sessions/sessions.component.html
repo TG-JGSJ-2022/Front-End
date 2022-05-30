@@ -1,31 +1,35 @@
 <div class="backgroud">
-  <app-nav-bar></app-nav-bar>
-  <mat-icon (click)="last()" class="back" >arrow_back</mat-icon>
-  <div class="conteiner">
-    <div class="content-wrapper">
+    <app-nav-bar></app-nav-bar>
 
-      <div class="page-title">
-          <div>{{courseName}}</div>
-          <p>Este es el historial de tus sesiones de la clase: </p>
-      </div>
+    <div class="page-title">
+        <div class="title-wrapper">
+            <div>{{courseName}}</div>
+            <p>Este es el historial de tus sesiones de la clase: </p>
+        </div>
+        <button (click)="backToCourses()">Regresar a cursos</button>
+    </div>
+    
+    <div class="conteiner">
+        <div class="content-wrapper">
 
-      <div class="sessions-wrapper">
-          <!-- Table Headers -->
-          <div class="table-header">Id sesión</div>
-          <div class="table-header">Fecha</div>
-          <div class="table-header">Estado</div>
-          <div class="table-header">Información detallada</div>
 
-          <!-- Table rows -->
-          <ng-container *ngFor="let session of sessions; index as i">
-              <div class="class-number"> {{ session.id }} </div>
-              <div class="date"> {{ session.fecha }} </div>
-              <div class="state"> {{ session.estado }} </div>
-              <div class="more-info">
-                  <button (click)="redirectToSession(i)">Más información</button>
-              </div>
-          </ng-container>
-      </div>
-  </div>
-  </div>
+            <div class="sessions-wrapper">
+                <!-- Table Headers -->
+                <div class="table-header">Id sesión</div>
+                <div class="table-header">Fecha</div>
+                <div class="table-header">Estado</div>
+                <div class="table-header">Información detallada</div>
+
+                <!-- Table rows -->
+                <ng-container *ngFor="let session of sessions; index as i">
+                    <div class="class-number"> {{ session.id }} </div>
+                    <div class="date"> {{ session.fecha }} </div>
+                    <div class="state"> {{ session.estado }} </div>
+                    <div class="more-info">
+                        <button (click)="redirectToSession(i)">Más información</button>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
 </div>

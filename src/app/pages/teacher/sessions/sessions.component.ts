@@ -19,7 +19,7 @@ export class SessionsComponent implements OnInit {
     private readonly route: ActivatedRoute,
     private readonly router: Router,
     private readonly userService: UserServiceService,
-    private location:Location
+    private location: Location
   ) { }
 
   // TODO : Sort sessions in asending order based on date
@@ -31,19 +31,23 @@ export class SessionsComponent implements OnInit {
     if (!this.courseName) return this.router.navigate(['/courses']);
 
     this.userService.getCouseSessions(this.username, this.courseId)
-        .subscribe( (data: any[]) => {
-          this.sessions = data;
-          console.log(data);
-        }, (error) => {
-          this.router.navigate([`/courses`]);
-        });
+      .subscribe((data: any[]) => {
+        this.sessions = data;
+        console.log(data);
+      }, (error) => {
+        this.router.navigate([`/courses`]);
+      });
   }
 
   redirectToSession(index: number) {
     this.router.navigate([`/sesion/${this.sessions[index].id}`]);
   }
-  last(){
-    console.log("entraaaa");
+
+  last() {
     this.location.back();
+  }
+
+  backToCourses() {
+    this.router.navigate([`/courses`]);
   }
 }
