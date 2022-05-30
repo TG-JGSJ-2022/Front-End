@@ -1,18 +1,14 @@
-.page-title {
-    padding: 20px;
-
-    font-weight: 500;
-    font-size: 2rem;
+.conteiner, .page-title {
+    box-shadow: 0px 0px 10px 0px #00000062;
 }
-.page-title p {
-    font-weight: 300;
-    font-size: 1rem;
 
-    padding-top: 15px;
-}
 .sessions-wrapper {
-
     margin-inline: auto;
+
+    width: 90%;
+
+    padding: 20px 0px;
+    margin-bottom: 20px;
 
     display: grid;
 
@@ -27,6 +23,58 @@
 
     font-size: 1.1rem;
 }
+
+.page-title {
+    background-color: rgb(255, 255, 255);
+    margin-top: 3%;
+    margin-left: 3%;
+    margin-right: 3%;
+    border-radius: 10px;
+    
+    height: 85px;
+    width: 95%;
+
+    padding: 20px;
+
+    font-weight: 500;
+    font-size: 2rem;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+
+    margin-right: 20px;
+}
+
+.page-title p {
+    font-weight: 300;
+    font-size: 1rem;
+
+    padding-top: 15px;
+}
+
+.page-title button {
+    height: 50px;
+    font-size: 1rem;
+
+    color: #2b71db;
+    background-color: #ffffff;
+    border: 1px solid #2b71db;
+
+    transition: ease 0.3s;
+}
+
+.page-title button:hover {
+    color: black;
+    background-color: #ffd500;
+    border: 1px solid #ffd500;
+}
+
+.page-title button:active {
+    background-color: #dab500;
+    border: 1px solid #dab500;
+}
+
 .table-header {
     margin-bottom: 15px;
 
@@ -38,43 +86,49 @@
     border: none;
     border-radius: 15px;
 }
+
 .more-info button:hover {
-    background-color: aliceblue;
+    background-color: #caa900;
 }
+
 .more-info button:active {
-    background-color: aquamarine;
+    background-color: #ffd500b1;
 }
+
 .backgroud {
-  background-color: rgb(218, 215, 215);
-  position: fixed;
+    background-color: rgb(218, 215, 215);
+    position: fixed;
 
-  top: 0;
-  left: 0;
+    top: 0;
+    left: 0;
 
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 .conteiner {
-  background-color: rgb(255, 255, 255);
-  margin-top: 3%;
-  /* margin-bottom: 3%; */
-  margin-left: 3%;
-  margin-right: 3%;
-  border-radius: 10px;
-  height: 75%;
-  overflow-y: auto;
+    background-color: rgb(255, 255, 255);
+    margin-top: 1.5%;
+    margin-left: 3%;
+    margin-right: 3%;
+    border-radius: 10px;
+    overflow-y: auto;
+
+    height: 60%;
+    width: 95%;
 }
+
 .back {
-  position: absolute;
-  z-index: 100;
-  margin: 1%;
-  margin-top: 3%;
-  cursor: pointer;
-  background-color: white;
-  border-radius: 50%;
+    position: absolute;
+    z-index: 100;
+    margin: 1%;
+    margin-top: 3%;
+    cursor: pointer;
+    background-color: white;
+    border-radius: 50%;
 }
+
 .back:hover {
-  color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.256);
+    color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.256);
 }

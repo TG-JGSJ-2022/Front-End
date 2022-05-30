@@ -8,10 +8,13 @@ import { UserServiceService } from 'src/app/services/user/user-service.service';
   styleUrls: ['./courses.component.css']
 })
 export class CoursesComponent implements OnInit {
-  public name = this.getData();
-  constructor(private router: Router,
-    private userService: UserServiceService) { }
 
+  constructor(
+    private router: Router,
+    private userService: UserServiceService
+  ) { }
+
+  public user_name: string = '';
   courses: any = [];
   username: string = '';
   userId: string = '';
@@ -30,6 +33,8 @@ export class CoursesComponent implements OnInit {
     this.username = sessionStorage.getItem('user')
     this.userId = sessionStorage.getItem('id');
 
+    this.user_name = sessionStorage.getItem('user');
+
     this.fillTeacherCoursesArray();
   }
 
@@ -37,10 +42,6 @@ export class CoursesComponent implements OnInit {
     console.log("entra")
     sessionStorage.setItem('courseName', courseName);
     this.router.navigate([`/sessions/${courseId}`]);
-  }
-
-  public getData() {
-    return sessionStorage.getItem('user');
   }
 
 }
