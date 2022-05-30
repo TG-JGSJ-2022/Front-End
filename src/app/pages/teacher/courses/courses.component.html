@@ -1,24 +1,28 @@
-<app-nav-bar></app-nav-bar>
-<div class="layout">
-    <div class="page-title">
-        <h1>Hola, {{user_name}} </h1> 
-        <p>Estos son tus cursos: </p>
-    </div>
-    
-    <div class="cards-wrapper">
-        <div class="card" *ngFor="let course of courses; let indexOfelement = index;">
-            <div class="card-title">
-                Código asignatura : {{ course.courseCode }} 
-            </div>
-            <div class="card-body">
-                {{ course.courseName }}
-            </div>
-            <div class="card-footer">
-                <div class="course-index">
-                    {{ indexOfelement + 1 }}
-                </div> 
-                <button (click)="redirectToCourseSessions(course.courseCode, course.courseName)">Ir a clase</button>
-            </div>
-        </div>
-    </div>
+<div class="backgroud">
+  <app-nav-bar></app-nav-bar>
+  <div class="conteiner">
+    <div class="layout">
+      <div class="page-title">
+          <h1>Hola, {{user_name}} </h1>
+          <p>Estos son tus cursos: </p>
+      </div>
+
+      <div class="cards-wrapper">
+          <div class="card" *ngFor="let course of courses; let indexOfelement = index;">
+              <div class="card-title">
+                  Código asignatura : {{ course.courseCode }}
+              </div>
+              <div class="card-body">
+                  {{ course.courseName }}
+              </div>
+              <div class="card-footer">
+                  <div class="course-index">
+                      {{ indexOfelement + 1 }}
+                  </div>
+                  <button (click)="redirectToCourseSessions(course.courseCode, course.courseName)">Ir a clase</button>
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>
 </div>
