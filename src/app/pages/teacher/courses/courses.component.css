@@ -64,7 +64,7 @@
 .card .card-body {
     text-align: center;
 
-    color: #2C5697;
+    color: #2b71db;
 
     font-size: 20px;
     font-weight: bold;
@@ -86,7 +86,7 @@
     border-radius: 40px;
 
     color: #FFFFFF;
-    background-color: #2C5697;
+    background-color: #2b71db;
 
     width: 30px;
     height: 30px;
@@ -100,14 +100,23 @@
 
 .card .card-footer button {
     width: 100px;
+    
+    color: #ffffff;
+    background-color: #2b71db;
+    border: 1px solid #2b71db;
+    
+    transition: ease 0.3s;
 }
 
 .card .card-footer button:hover {
-    background-color: #ffd500;
+    color: #2b71db;
+    background-color: #C4C4C4;
+    border: 1px solid #2b71db;
 }
 
 .card .card-footer button:active {
-    background-color: rgba(255, 213, 0, 0.77);
+    background-color: #5893ed;
+    border: 1px solid #5893ed;
 }
 
 /***********************
