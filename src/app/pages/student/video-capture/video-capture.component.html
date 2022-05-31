@@ -1,41 +1,68 @@
-<router-outlet></router-outlet>
-<app-nav-bar></app-nav-bar>
-<div class='page-header'>
-  <h2>
-    Pontificia Universidad Javeriana
-  </h2>
-</div>
+<div class="backgroud">
+  <router-outlet></router-outlet>
+  <app-nav-bar></app-nav-bar>
+  <div class="conteiner">
+    <div class="page-header">
+      <h2>Pontificia Universidad Javeriana</h2>
+    </div>
 
-<div>
-  <div class = 'picture-capture'>
-    <h2 class='info'> 
-      Hola, {{name}}!
-      Bienvenido a la sesión virtual de tu clase. A continuación se realizará la captura de tus expresiones faciales. Para continuar en la sesión,
-      debes manifestar que estás de acuerdo con que tus datos serán tratados acorde a la <a href = 'https://www.javeriana.edu.co/documents/10179/9567882/Acuerdo+No+657.pdf'>política de protección de datos personales</a>
-      y la <a href = 'https://www.javeriana.edu.co/documentos/tratamiento_datos_personales.pdf'>política de tratamiento de datos personales</a>
-    </h2>
-    <label class="permiso">
-      <input type='checkbox' [checked]="acceptPolicy" (click)='validatePolicy($event)'/>
-      Autorizo que la Pontifica Universidad Javeriana haga uso de mis datos personales acorde a la política de protección y privacidad de datos
-    </label>
+    <div>
+      <div class="picture-capture">
+        <h2 class="info">
+          Hola, {{ name }}! Bienvenido a la sesión virtual de tu clase. A
+          continuación se realizará la captura de tus expresiones faciales. Para
+          continuar en la sesión, debes manifestar que estás de acuerdo con que
+          tus datos serán tratados acorde a la
+          <a
+            href="https://www.javeriana.edu.co/documents/10179/9567882/Acuerdo+No+657.pdf"
+            >política de protección de datos personales</a
+          >
+          y la
+          <a
+            href="https://www.javeriana.edu.co/documentos/tratamiento_datos_personales.pdf"
+            >política de tratamiento de datos personales</a
+          >
+        </h2>
+        <label class="permiso">
+          <input
+            type="checkbox"
+            [checked]="acceptPolicy"
+            (click)="validatePolicy($event)"
+          />
+          Autorizo que la Pontifica Universidad Javeriana haga uso de mis datos
+          personales acorde a la política de protección y privacidad de datos
+        </label>
+      </div>
+
+      <div class="camera">
+        <webcam
+          [height]="500"
+          [width]="500"
+          [trigger]="triggerObservable"
+          (imageCapture)="handleImage($event)"
+          *ngIf="showWebcam && acceptPolicy"
+          [videoOptions]="videoOptions"
+          [imageQuality]="1"
+          (initError)="handleInitError($event)"
+        ></webcam>
+        <br />
+      </div>
+    </div>
+
+    <!--<div class="snapshot" *ngIf="webcamImage">
+    <img [src]="webcamImage.imageAsDataUrsl"/>
+
+  </div>-->
   </div>
-
-  <div class='camera'>
-    <webcam [height]="500" [width]="500" [trigger]="triggerObservable" (imageCapture)="handleImage($event)" *ngIf="showWebcam && acceptPolicy"
-            [videoOptions]="videoOptions"
-            [imageQuality]="1"
-            (initError)="handleInitError($event)"
-    ></webcam>
-    <br/>
-  </div>
+  <footer>
+    <p class="footer">
+      Programa basado en el siguiente proyecto de GitHub:
+      <a
+        target="_blank"
+        rel="noopener"
+        href="https://github.com/basst314/ngx-webcam"
+        >Ngx-Webcam / GitHub</a
+      >
+    </p>
+  </footer>
 </div>
-
-<!--<div class="snapshot" *ngIf="webcamImage">
-  <img [src]="webcamImage.imageAsDataUrsl"/>
-  
-</div>-->
-
-
-<footer>
-  <p class='footer'>Programa basado en el siguiente proyecto de GitHub: <a target="_blank" rel="noopener" href="https://github.com/basst314/ngx-webcam">Ngx-Webcam / GitHub</a></p>
-</footer>

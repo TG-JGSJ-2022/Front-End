@@ -80,9 +80,14 @@ export class Graph1Component implements OnInit {
     this.options = {
       title: {
         show: true,
-        text: "Porcentaje de emociones en relación con el tiempo",
+        text: "Numero de estudiantes por emociones",
         left: "left",
-        top: 0
+        top: 0,
+        subtext: "Información de la cantidad de\nestudiantes por emoción\ndurante la sesión",
+        subtextStyle: {
+          fontSize: 12
+        }
+
       },
       legend: {
         data: [

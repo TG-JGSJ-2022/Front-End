@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(["/capture"]);
         }
         else {
-          this.router.navigate(["/courses"]);
+          this.router.navigate(["/agreement"]);
         }
       }, () => {
         this.router.navigate(["/login"]);
