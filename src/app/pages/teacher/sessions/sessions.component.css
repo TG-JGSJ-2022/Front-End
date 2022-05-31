@@ -65,14 +65,15 @@
 }
 
 .page-title button:hover {
-    color: black;
-    background-color: #ffd500;
-    border: 1px solid #ffd500;
+    color: #ffffff;
+    background-color: #2b71db;
+    border: 1px solid #2b71db;
 }
 
 .page-title button:active {
-    background-color: #dab500;
-    border: 1px solid #dab500;
+    background-color: #5893ed;
+    border: 1px solid #5893ed;
+
 }
 
 .table-header {
@@ -136,8 +137,6 @@
 }
 .fila{
   width: 100%;
-
-
 }
 .fila:hover{
   background-color: rgba(0, 0, 0, 0.256);
@@ -146,12 +145,8 @@
   height: 100%;
   width: 100%;
 
-
   padding: 20px 0px;
   margin-bottom: 20px;
-
-
-
 
   justify-content: center;
 
