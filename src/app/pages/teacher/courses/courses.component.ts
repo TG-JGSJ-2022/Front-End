@@ -33,7 +33,7 @@ export class CoursesComponent implements OnInit {
     this.username = sessionStorage.getItem('user')
     this.userId = sessionStorage.getItem('id');
 
-    this.user_name = sessionStorage.getItem('user');
+    this.user_name = sessionStorage.getItem('name');
 
     this.fillTeacherCoursesArray();
   }

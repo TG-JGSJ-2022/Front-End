@@ -38,10 +38,12 @@ export class LoginComponent implements OnInit {
   submitForm(event: any) {
     this.userService.login(this.username, this.password)
       .subscribe((data: resopnseUser) => {
-        console.log(Response)
+        console.log("--------------")
+        console.log(data);
         sessionStorage.setItem('user', data.username);
         sessionStorage.setItem('id', data.id);
         sessionStorage.setItem('rol', data.rol);
+        sessionStorage.setItem('name', data["name"]);
         if (data.rol == "estudiante") {
           this.router.navigate(["/capture"]);
         }

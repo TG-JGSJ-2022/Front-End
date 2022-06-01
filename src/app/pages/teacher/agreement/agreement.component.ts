@@ -17,9 +17,9 @@ export class AgreementComponent implements OnInit {
     this.acceptPolicy = event.target.checked;
     if (this.acceptPolicy) {
       this.router.navigate(["/courses"]);
-    } 
+    }
   }
   public getData(){
-    return sessionStorage.getItem('user');
+    return sessionStorage.getItem('name');
   }
 }

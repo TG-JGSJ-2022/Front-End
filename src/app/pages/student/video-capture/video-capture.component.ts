@@ -94,7 +94,7 @@ export class VideoCaptureComponent implements OnInit, OnDestroy {
     return this.trigger.asObservable();
   }
   public getData() {
-    return sessionStorage.getItem('user');
+    return sessionStorage.getItem('name');
   }
 
 }
