@@ -5,4 +5,6 @@ export class Results {
     estudiante_id: number;
     fecha: Date;
     status: number;
+    name: string;
+    date: Date;
 }

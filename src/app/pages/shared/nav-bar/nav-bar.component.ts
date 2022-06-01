@@ -242,6 +242,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   public update_data(){
     this.modal.getResultsPrediction().subscribe((res) => {
+      console.log(res);
       this.estudiantes = []
       this.studentsOnline = 0;
       this.positiveResult = 0;
@@ -264,8 +265,9 @@ export class NavBarComponent implements OnInit, OnDestroy {
         console.log("else");
 
         //Debe ser desde la tabla sesion
-        let date = new Date(results[0].fecha);
-
+        let date = new Date(results[0].date);
+        this.class_name = results[0].name;
+        console.log(date, this.class_name);
         const day = date.toLocaleString('default', {day: '2-digit'});
         const month = date.toLocaleString('default', {month: 'long'});
         this.sesion_date = day + ' de ' + month ;
