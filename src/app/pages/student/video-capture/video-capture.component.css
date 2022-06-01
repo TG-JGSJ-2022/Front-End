@@ -97,7 +97,12 @@ footer {
   }
 
   .footer {
+    color: white;
+    text-align: center;
     font-size: 8px;
+  }
+  .footer a{
+    color: white;
   }
   .backgroud {
     background-color: rgb(218, 215, 215);
