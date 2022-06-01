@@ -7,7 +7,8 @@ import { UserServiceService } from 'src/app/services/user/user-service.service';
 interface resopnseUser {
   id: string,
   username: string,
-  rol: string
+  rol: string,
+  name: string
 }
 
 @Component({
@@ -43,7 +44,7 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('user', data.username);
         sessionStorage.setItem('id', data.id);
         sessionStorage.setItem('rol', data.rol);
-        sessionStorage.setItem('name', data["name"]);
+        sessionStorage.setItem('name', data.name);
         if (data.rol == "estudiante") {
           this.router.navigate(["/capture"]);
         }

@@ -32,7 +32,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
   userId: string = '';
   horarios: Horarios[];
   hoy_dia: string;
-  activeClass: boolean = true;
+  activeClass: boolean = false;
   studentsOnline: number = 0;
   positiveResult: number = 0;
   negativeResult: number = 0;
@@ -76,7 +76,9 @@ export class NavBarComponent implements OnInit, OnDestroy {
     this.positiveResult = 0;
     this.negativeResult = 0;
     this.estudiantes = [];
-    this.nextHour();
+    if(this.getData() == 'profesor'){
+      this.nextHour();
+    }
   }
   ngOnDestroy(){
     //this.subscription.unsubscribe();
@@ -230,9 +232,11 @@ export class NavBarComponent implements OnInit, OnDestroy {
   }
 
   claseActiva(content) : void {
-    if(this.activeClass == true){
-      console.log(this.activeClass)
-      this.modalService.open(content, { centered: true, modalDialogClass: 'modal-body' });
+    if(this.getData() == 'profesor'){
+      if(this.activeClass == true){
+        console.log(this.activeClass)
+        this.modalService.open(content, { centered: true, modalDialogClass: 'modal-body' });
+      }
     }
   }
 
@@ -334,6 +338,11 @@ export class NavBarComponent implements OnInit, OnDestroy {
     })
 
   }
+
+  public getData(){
+    return sessionStorage.getItem('rol');
+  }
+
   public end_sesion(){
     this.activeClass = false;
     this.subscription.unsubscribe()
