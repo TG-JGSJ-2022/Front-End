@@ -65,14 +65,14 @@
 }
 
 .page-title button:hover {
-    color: black;
-    background-color: #ffd500;
-    border: 1px solid #ffd500;
+    color: #ffffff;
+    background-color: #2b71db;
+    border: 1px solid #2b71db;
 }
 
 .page-title button:active {
-    background-color: #dab500;
-    border: 1px solid #dab500;
+    background-color: #2b71db;
+    border: 1px solid #2b71db;
 }
 
 .table-header {

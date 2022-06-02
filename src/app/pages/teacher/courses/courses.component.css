@@ -57,14 +57,15 @@
 }
 
 .card .card-title {
+    color: #000000;
+    font-weight: bold;
     font-size: 1rem;
-    font-weight: 300;
 }
 
 .card .card-body {
     text-align: center;
 
-    color: #2C5697;
+    color: #2b71db;
 
     font-size: 20px;
     font-weight: bold;
@@ -86,7 +87,7 @@
     border-radius: 40px;
 
     color: #FFFFFF;
-    background-color: #2C5697;
+    background-color: #2b71db;
 
     width: 30px;
     height: 30px;
@@ -100,15 +101,15 @@
 
 .card .card-footer button {
     width: 100px;
+    color: #ffffff;
+    background-color: #2b71db;
 }
 
 .card .card-footer button:hover {
-    background-color: #ffd500;
+    color:  #2666c5;
+    background-color: #fff9f9de;
 }
 
-.card .card-footer button:active {
-    background-color: rgba(255, 213, 0, 0.77);
-}
 
 /***********************
         Resoponsive
