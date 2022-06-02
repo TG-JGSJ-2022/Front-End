@@ -33,7 +33,7 @@ export class NavBarComponent implements OnInit {
   userId: string = '';
   horarios: Horarios[];
   hoy_dia: string;
-  activeClass: boolean = false;
+  activeClass: boolean = true;
   studentsOnline: number = 0;
   positiveResult: number = 0;
   negativeResult: number = 0;
@@ -50,9 +50,9 @@ export class NavBarComponent implements OnInit {
   private interval: number;
   emocion_1 = 'Triste';
   emocion_2 = 'Confundido';
-  emocion_3 = 'Estresado';
-  emocion_4 = 'Aburrido';
-  emocion_5 = 'Frustrado';
+  emocion_3 = 'Aburrido';
+  emocion_4 = 'Frustrado';
+  emocion_5 = 'Estresado';
   em_0 = 0;
   em_1 = 0;
   em_2 = 0;
@@ -155,8 +155,10 @@ export class NavBarComponent implements OnInit {
                 this.activeClass = false;
                 this.alive = false;
               } else if (hoy < hora_fin) {
+                console.log("before",this.activeClass)
                 this.activeClass = true;
                 this.consultar_inicio();
+                console.log("after",this.activeClass)
                 this.alive = true;
               } else {
                 this.activeClass = false;
@@ -200,6 +202,7 @@ export class NavBarComponent implements OnInit {
       this.subscription = TimerObservable.create(0, this.interval)
         //.takeWhile(() => this.alive)
         .subscribe(() => {
+          this.activeClass = true;
           this.update_data();
         });
       //}
@@ -217,9 +220,9 @@ export class NavBarComponent implements OnInit {
     }
   }
 
-  private count = 0;
   public update_data() {
     this.modal.getResultsPrediction().subscribe((res) => {
+      console.log(this.activeClass)
       this.emociones = [];
       this.estudiantes = [];
       this.studentsOnline = 0;
@@ -232,9 +235,7 @@ export class NavBarComponent implements OnInit {
         btn.style.visibility = 'hidden';
         return;
       }
-
       btn.style.visibility = 'visible';
-
       let date = new Date(res[0].date);
       this.class_name = res[0].name;
       const day = date.toLocaleString('default', { day: '2-digit' });
@@ -296,7 +297,7 @@ export class NavBarComponent implements OnInit {
         'nombre': this.emocion_5, 'porcentaje':
           ((emotions[6] / this.studentsOnline) * 100)
       });
-    // this.emociones.sort((data, prev) => this.emociones_id[data.porcentaje] - this.emociones_id[prev.porcentaje])
+    this.emociones.sort((data, prev) => this.emociones_id[data.porcentaje] - this.emociones_id[prev.porcentaje])
 
   }
 
