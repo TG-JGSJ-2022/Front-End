@@ -11,7 +11,9 @@
 .page-title {
     padding: 20px 40px;
 }
-
+.page-title h1 {
+    padding: 0px;
+}
 .page-title > * {
     color: #212529;
 }
@@ -54,6 +56,11 @@
     flex-flow: column nowrap;
 
     justify-content: space-between;
+
+    transition: ease 0.3s;
+}
+.card:hover {
+    transform: translate(-3px, -3px);
 }
 
 .card .card-title {
@@ -103,6 +110,8 @@
     width: 100px;
     color: #ffffff;
     background-color: #2b71db;
+
+    transition: ease 0.25s;
 }
 
 .card .card-footer button:hover {
